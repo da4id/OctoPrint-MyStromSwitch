@@ -14,8 +14,6 @@ from octoprint.util import RepeatedTimer
 class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                             octoprint.plugin.AssetPlugin,
                             octoprint.plugin.TemplatePlugin,
-                            octoprint.plugin.SimpleApiPlugin,
-                            octoprint.plugin.EventHandlerPlugin,
                             octoprint.plugin.StartupPlugin):
 
     def __init__(self):
@@ -124,7 +122,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             self._shutdown_printer_enabled = self.lastCheckBoxValue
 
     def get_assets(self):
-        return dict(js=["js/shutdownprinter.js"], css=["css/shutdownprinter.css"])
+        return dict(js=["js/mystromswitch.js"], css=["css/mystromswitch.css"])
 
     def get_template_configs(self):
         return [dict(type="sidebar",
@@ -171,13 +169,13 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                 eventManager().fire(Events.SETTINGS_UPDATED)
         if data["eventView"] == True:
             self._plugin_manager.send_plugin_message(self._identifier,
-                                                     dict(shutdownprinterEnabled=self._shutdown_printer_enabled,
+                                                     dict(mystromswitchEnabled=self._shutdown_printer_enabled,
                                                           type="timeout", timeout_value=self._timeout_value))
 
     def on_event(self, event, payload):
 
         # if event == Events.CLIENT_OPENED:
-        # self._plugin_manager.send_plugin_message(self._identifier, dict(shutdownprinterEnabled=self._shutdown_printer_enabled, type="timeout", timeout_value=self._timeout_value))
+        # self._plugin_manager.send_plugin_message(self._identifier, dict(mystromswitchEnabled=self._shutdown_printer_enabled, type="timeout", timeout_value=self._timeout_value))
         # return
 
         if not self._shutdown_printer_enabled:
@@ -258,12 +256,12 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
 
         self._timeout_value -= 1
         self._plugin_manager.send_plugin_message(self._identifier,
-                                                 dict(shutdownprinterEnabled=self._shutdown_printer_enabled,
+                                                 dict(mystromswitchEnabled=self._shutdown_printer_enabled,
                                                       type="timeout", timeout_value=self._timeout_value))
         if self._printer.get_state_id() == "PRINTING" and self._printer.is_printing() == True:
             self._timeout_value = 0
             self._plugin_manager.send_plugin_message(self._identifier,
-                                                     dict(shutdownprinterEnabled=self._shutdown_printer_enabled,
+                                                     dict(mystromswitchEnabled=self._shutdown_printer_enabled,
                                                           type="timeout", timeout_value=self._timeout_value))
             self._abort_timer.cancel()
             self._abort_timer = None
@@ -412,7 +410,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
 
     def get_update_information(self):
         return dict(
-            shutdownprinter=dict(
+            mystromswitch=dict(
                 displayName="OctoPrint-MyStromSwitch",
                 displayVersion=self._plugin_version,
 
