@@ -413,22 +413,22 @@ class shutdownprinterPlugin(octoprint.plugin.SettingsPlugin,
     def get_update_information(self):
         return dict(
             shutdownprinter=dict(
-                displayName="Shutdown Printer",
+                displayName="OctoPrint-MyStromSwitch",
                 displayVersion=self._plugin_version,
 
                 # version check: github repository
                 type="github_release",
-                user="devildant",
-                repo="OctoPrint-ShutdownPrinter",
+                user="da4id",
+                repo="OctoPrint-MyStromSwitch",
                 current=self._plugin_version,
 
                 # update method: pip w/ dependency links
-                pip="https://github.com/devildant/OctoPrint-ShutdownPrinter/archive/{target_version}.zip"
+                pip="https://github.com/da4id/OctoPrint-MyStromSwitch/archive/master.zip"
             )
         )
 
 
-__plugin_name__ = "Shutdown Printer"
+__plugin_name__ = "OctoPrint-MyStromSwitch"
 
 
 def __plugin_load__():
