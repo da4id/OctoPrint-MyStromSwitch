@@ -1,180 +1,19 @@
 <form class="form-horizontal">
 	<h4>General</h4>
 	<hr>
-    <h5>Mode GCODE</h5>
-		<div class="control-group">
-			<div class="controls">
-				<label class="checkbox">
-				<input type="checkbox"  id="mystromswitch_mode_shutdown_gcode" data-bind="checked: settings.plugins.mystromswitch._mode_shutdown_gcode">activate this mode
-				</label>
-			</div>
-		</div>
 	<div class="control-group">
-        <label class="control-label">{{ _('GCODE') }}</label>
+        <label class="control-label">{{ _('IP-Address') }}</label>
         <div class="controls">
-            <input type="text" class="input-block-level" data-bind="value: settings.plugins.mystromswitch.gcode">
+            <input type="text" class="input-block-level" data-bind="value: settings.plugins.mystromswitch.ip">
         </div>
     </div>
+
 	<div class="control-group">
-        <label class="control-label">{{ _('Parameter (IP or other)') }}</label>
-        <div class="controls">
-            <input type="text" class="input-block-level" data-bind="value: settings.plugins.mystromswitch.url">
-        </div>
-    </div>
-	<div class="control-group">
-        <div class="controls">
-            <button id="tester_mystromswitch_gcode" type="button" class="btn btn-primary pull-right"><i class="fa fa-spinner fa-spin" data-bind="visible: sending" style="display: none;"></i>Test</button>
-        </div>
-    </div>
-	
-	<hr>
-	<h5>Mode API</h5>
-	<div class="control-group">
-		<div class="controls">
-			<label class="checkbox">
-			<input type="checkbox" id="mystromswitch_mode_shutdown_api" data-bind="checked: settings.plugins.mystromswitch._mode_shutdown_api">activate this mode
-			</label>
-		</div>
-	</div>
-	<div class="control-group">
-		<label class="control-label">{{ _('api key (key octoprint)') }}</label>
-		<div class="controls">
-			<div class="input-append">
-				<input type="text"  class="input" data-bind="value: settings.plugins.mystromswitch.api_key_plugin">
-		   
-			</div>
-		</div>
-	</div>
-	<div class="control-group">
-		<label class="control-label">{{ _('Plugin ID') }}</label>
-		<div class="controls">
-			<div class="input-append">
-				<input type="text"  class="input" data-bind="value: settings.plugins.mystromswitch.api_plugin_name">
-		   
-			</div>
-		</div>
-	</div>
-	<div class="control-group">
-        <label class="control-label">{{ _('Port') }}</label>
+        <label class="control-label">Refresh Intervall</label>
         <div class="controls">
             <div class="input-append">
-			<input type="number" min='0' class="input-mini text-right" data-bind="value: settings.plugins.mystromswitch.api_plugin_port">
-            </div>
-        </div>
-    </div>
-	<div class="control-group">
-        <label class="control-label">JSON</label>
-        <div class="controls">
-            <textarea rows="4" class="block" data-bind="value: settings.plugins.mystromswitch.api_json_command"></textarea>
-        </div>
-    </div>
-	<div class="control-group">
-        <div class="controls">
-            <button id="tester_mystromswitch_api" type="button" class="btn btn-primary pull-right"><i class="fa fa-spinner fa-spin" data-bind="visible: sending" style="display: none;"></i>Test</button>
-        </div>
-    </div>
-	<hr>
-	<h5>Mode API Custom</h5>
-	<div class="control-group">
-		<div class="controls">
-			<label class="checkbox">
-			<input type="checkbox" id="mystromswitch_mode_shutdown_api_custom" data-bind="checked: settings.plugins.mystromswitch._mode_shutdown_api_custom">activate this mode
-			</label>
-		</div>
-	</div>
-	<div class="control-group">
-		<div class="controls">
-			<label class="checkbox">
-			<input type="checkbox"  id="mystromswitch_api_custom_GET" data-bind="checked: settings.plugins.mystromswitch.api_custom_GET">GET
-			</label>
-			<label class="checkbox">
-			<input type="checkbox"  id="mystromswitch_api_custom_POST" data-bind="checked: settings.plugins.mystromswitch.api_custom_POST">POST
-			</label>
-            <label class="checkbox">
-			<input type="checkbox"  id="mystromswitch_api_custom_PUT" data-bind="checked: settings.plugins.mystromswitch.api_custom_PUT">PUT
-			</label>
-		</div>
-	</div>
-	<div class="control-group">
-		<label class="control-label">{{ _('URL') }}</label>
-		<div class="controls">
-				<input type="text"  class="input-block-level" data-bind="value: settings.plugins.mystromswitch.api_custom_url">
-		</div>
-	</div>
-	<div class="control-group">
-        <label class="control-label">header (json format)</label>
-        <div class="controls">
-            <textarea rows="4" class="block" data-bind="value: settings.plugins.mystromswitch.api_custom_json_header"></textarea>
-        </div>
-    </div>
-	<div class="control-group">
-        <label class="control-label">body</label>
-        <div class="controls">
-            <textarea rows="4" class="block" data-bind="value: settings.plugins.mystromswitch.api_custom_body"></textarea>
-        </div>
-    </div>
-	<div class="control-group">
-        <div class="controls">
-            <button id="tester_mystromswitch_api_custom" type="button" class="btn btn-primary pull-right"><i class="fa fa-spinner fa-spin" data-bind="visible: sending" style="display: none;"></i>Test</button>
-        </div>
-    </div>
-	<hr>
-	<h5>Common options</h5>
-	<div class="control-group">
-        <label class="control-label">Abort Timeout</label>
-        <div class="controls">
-            <div class="input-append">
-                <input type="number" class="input-mini text-right" data-bind="value: settings.plugins.mystromswitch.abortTimeout">
+                <input type="number" class="input-mini text-right" data-bind="value: settings.plugins.mystromswitch.intervall">
                 <span class="add-on">sec</span>
-            </div>
-        </div>
-    </div>
-	<div class="control-group">
-        <div class="controls">
-            <label class="checkbox">
-            <input type="checkbox" data-bind="checked: settings.plugins.mystromswitch.rememberCheckBox"> Remember the value of "Shutdown Printer after print finishes"
-            </label>
-        </div>
-    </div>
-	<hr>
-	  <h4>Events catch</h4>
-	<div class="control-group">
-        <div class="controls">
-            <label class="checkbox">
-            <input type="checkbox" data-bind="checked: settings.plugins.mystromswitch.printFailed"> Event print failed
-            </label>
-        </div>
-    </div>
-	<div class="control-group">
-        <div class="controls">
-            <label class="checkbox">
-            <input type="checkbox" data-bind="checked: settings.plugins.mystromswitch.printCancelled"> Event print cancelled
-            </label>
-        </div>
-    </div>
-	<hr>
-	<h4>Nozzle temperature target</h4>
-	<div class="control-group">
-        <div class="controls">
-            <label class="checkbox">
-            <input type="checkbox" mystromswitchTemperatureTarget="true" data-bind="checked: settings.plugins.mystromswitch.temperatureTarget"> Enable temperature target
-            </label>
-        </div>
-    </div>
-	<h4>Extra command/script</h4>
-	<div class="control-group">
-        <div class="controls">
-            <label class="checkbox">
-            <input type="text"  class="input" data-bind="value: settings.plugins.mystromswitch.extraCommand">
-            </label>
-        </div>
-    </div>
-	<div class="control-group">
-        <label class="control-label">{{ _('Temperature') }}</label>
-        <div class="controls">
-            <div class="input-append">
-                <input type="number" min='0' class="input-mini text-right" data-bind="value: settings.plugins.mystromswitch.temperatureValue">
-                <span class="add-on">°C</span>
             </div>
         </div>
     </div>
