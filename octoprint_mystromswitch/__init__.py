@@ -11,7 +11,7 @@ from octoprint.server import user_permission
 from octoprint.util import RepeatedTimer
 
 
-class shutdownprinterPlugin(octoprint.plugin.SettingsPlugin,
+class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                             octoprint.plugin.AssetPlugin,
                             octoprint.plugin.TemplatePlugin,
                             octoprint.plugin.SimpleApiPlugin,
@@ -128,7 +128,7 @@ class shutdownprinterPlugin(octoprint.plugin.SettingsPlugin,
 
     def get_template_configs(self):
         return [dict(type="sidebar",
-                     name="Shutdown Printer",
+                     name="MyStrom Switch",
                      custom_bindings=False,
                      icon="power-off"),
                 dict(type="settings", custom_bindings=False)]
@@ -423,7 +423,7 @@ class shutdownprinterPlugin(octoprint.plugin.SettingsPlugin,
                 current=self._plugin_version,
 
                 # update method: pip w/ dependency links
-                pip="https://github.com/da4id/OctoPrint-MyStromSwitch/archive/master.zip"
+                pip="https://github.com/da4id/OctoPrint-MyStromSwitch/archive/{target_version}.zip"
             )
         )
 
@@ -433,7 +433,7 @@ __plugin_name__ = "OctoPrint-MyStromSwitch"
 
 def __plugin_load__():
     global __plugin_implementation__
-    __plugin_implementation__ = shutdownprinterPlugin()
+    __plugin_implementation__ = MyStromSwitchPlugin()
 
     global __plugin_hooks__
     __plugin_hooks__ = {
