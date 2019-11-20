@@ -54,6 +54,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         self._timer.start()
 
     def _timer_task(self):
+        self._logger.debug("_timer_task")
         if self.ip is not None:
             self._logger.debug("send Request")
             try:
