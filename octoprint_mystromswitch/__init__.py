@@ -49,9 +49,10 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         self._logger.info(self.ip)
         self._logger.info(self.intervall)
 
-        self._logger.info("Starting timer.")
-        self._timer = RepeatedTimer(self.intervall, self._timer_task)
-        self._timer.start()
+        if self.intervall >= 1 and self.ip is not None:
+            self._logger.info("Starting timer")
+            self._timer = RepeatedTimer(self.intervall, self._timer_task)
+            self._timer.start()
 
     def _timer_task(self):
         self._logger.debug("timer_task")
@@ -74,6 +75,10 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
 
     def on_shutdown(self):
         self._logger.info("Hello World!")
+
+    def on_settings_load(self):
+        self._logger.info("on_settings_load")
+        self.initialize()
 
     def on_settings_initialized(self):
         self._logger.info("on_settings_initialized")
