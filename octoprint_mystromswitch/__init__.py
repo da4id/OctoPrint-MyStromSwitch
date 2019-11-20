@@ -54,7 +54,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         self._timer.start()
 
     def _timer_task(self):
-        self._logger.debug("_timer_task")
+        self._logger.debug("timer_task")
         if self.ip is not None:
             self._logger.debug("send Request")
             try:
@@ -75,6 +75,10 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
     def on_shutdown(self):
         self._logger.info("Hello World!")
 
+    def on_settings_initialized(self):
+        self._logger.info("on_settings_initialized")
+        self.initialize()
+
     def on_settings_migrate(self, target, current):
         pass
 
@@ -88,6 +92,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         )
 
     def on_settings_save(self, data):
+        self._logger.info("on_settings_save")
         octoprint.plugin.SettingsPlugin.on_settings_save(self, data)
         self.initialize()
 
