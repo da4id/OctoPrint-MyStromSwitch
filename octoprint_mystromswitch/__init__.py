@@ -56,7 +56,6 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             try:
                 request = requests.get(
                     'http://{}/report'.format(self.ip), timeout=1)
-                self._logger.info(request.json())
                 self._plugin_manager.send_plugin_message(self._identifier,
                                                          request.json())
             except (requests.exceptions.ConnectionError, ValueError):
@@ -65,10 +64,10 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             self._logger.info("Ip is None")
 
     def on_after_startup(self):
-        self._logger.info("Hello World!")
+        pass
 
     def on_shutdown(self):
-        self._logger.info("Hello World!")
+        pass
 
     def on_settings_migrate(self, target, current):
         pass
