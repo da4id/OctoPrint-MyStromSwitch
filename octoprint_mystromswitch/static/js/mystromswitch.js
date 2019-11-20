@@ -7,6 +7,7 @@ $(function() {
         self.printer = parameters[2];
 
         self.mystromswitchEnabled = ko.observable();
+        self.mystromswitchPowerValue = document.getElementById("mystromswitchPowerValue")
 
         // Hack to remove automatically added Cancel button
         // See https://github.com/sciactive/pnotify/issues/141
@@ -145,6 +146,7 @@ $(function() {
 
 			 self.mystromswitchEnabled(data.mystromswitchEnabled);
                 if (data.power != null) {
+                    self.mystromswitchPowerValue.innerHTML = "Power Consumption"+data.power+"W"
                     self.timeoutPopupOptions.text = self.timeoutPopupText + data.power;
                     if (typeof self.timeoutPopup != "undefined") {
                         self.timeoutPopup.update(self.timeoutPopupOptions);
