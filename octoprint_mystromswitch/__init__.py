@@ -46,9 +46,6 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             self._timer.cancel()
             self._logger.info("Canceling Timer")
 
-        self._logger.info(self.ip)
-        self._logger.info(self.intervall)
-
         if self.intervall >= 1 and self.ip is not None:
             self._logger.info("Starting timer")
             self._timer = RepeatedTimer(self.intervall, self._timer_task)
@@ -60,11 +57,10 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                 request = requests.get(
                     'http://{}/report'.format(self.ip), timeout=1)
                 self._logger.info(request.json())
-                # self._plugin_manager.send_plugin_message(self._identifier,
-                #                                         request.json())
+                self._plugin_manager.send_plugin_message(self._identifier,
+                                                         request.json())
             except (requests.exceptions.ConnectionError, ValueError):
                 self._logger.info('Connection Error Host: {}'.format(self.ip))
-            # Do all Staff here
         else:
             self._logger.info("Ip is None")
 
