@@ -56,8 +56,8 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             try:
                 request = requests.get(
                     'http://{}/report'.format(self.ip), timeout=1)
-                self.data = request.json()
-                self._logger.info(self.data)
+                self._plugin_manager.send_plugin_message(self._identifier,
+                                                         request.json())
             except (requests.exceptions.ConnectionError, ValueError):
                 self._logger.info('Connection Error Host: {}'.format(self.ip))
             # Do all Staff here
@@ -74,6 +74,8 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         self.initialize()
 
     def on_settings_migrate(self, target, current):
+        if current >= target:
+            return
         pass
 
     def get_settings_version(self):
