@@ -129,14 +129,20 @@ $(function() {
             }
         }
 
+        self.onEventPrinterStateChanged = function(payload) {
+        			if (payload.state_id == "PRINTING" || payload.state_id == "PAUSED"){
+        				self.testButtonChangeStatus(true);
+        			} else {
+        				self.testButtonChangeStatus(false);
+        			}
+        		}
+
         self.mystromswitchEnabled.subscribe(self.onmystromswitchEvent, self);
 
         self.onDataUpdaterPluginMessage = function(plugin, data) {
             if (plugin != "mystromswitch" && plugin != "octoprint_mystromswitch") {
                 return;
             }
-
-			 self.mystromswitchEnabled(data.mystromswitchEnabled);
                 if (data.power != null) {
                     self.timeoutPopupOptions.text = self.timeoutPopupText + data.power;
                     if (typeof self.timeoutPopup != "undefined") {
