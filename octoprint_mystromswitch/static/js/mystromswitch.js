@@ -6,6 +6,8 @@ $(function() {
         self.settings = parameters[1];
         self.printer = parameters[2];
 
+        self.mystromswitchEnabled = ko.observable();
+
         // Hack to remove automatically added Cancel button
         // See https://github.com/sciactive/pnotify/issues/141
         //PNotify.prototype.options.confirm.buttons = [];
