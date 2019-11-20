@@ -7,7 +7,114 @@ $(function() {
         self.printer = parameters[2];
 		
 
-		
+        self.mystromswitchEnabled = ko.observable();
+
+
+		self.testButtonChangeStatus = function (stat) {
+			$("#tester_mystromswitch_gcode").prop("disabled", stat);
+			$("#tester_mystromswitch_api").prop("disabled", stat);
+			$("#tester_mystromswitch_api_custom").prop("disabled", stat);
+		}
+
+		self.eventChangeCheckToRadio =  function (id, listOff) {
+				$(id).on("change", function () {
+				if ($(this).prop("checked") == true)
+				{
+					listOff.forEach(function(element) {
+						if (id != element.id)
+						{
+							if ($(element.id).prop("checked") == true)
+							{
+								$(element.id).unbind("change");
+								$(element.id).trigger("click");
+								self.eventChangeCheckToRadio(element.id, listOff);
+							}
+						}
+					});
+				}
+			})
+		}
+
+		$("#tester_mystromswitch_gcode").on("click", function () {
+			self.settings.saveData();
+			$(this).children("i").show();
+			setTimeout(function (current) {
+			$.ajax({
+                url: API_BASEURL + "plugin/mystromswitch",
+                type: "POST",
+                dataType: "json",
+                data: JSON.stringify({
+                    command: "shutdown",
+					mode: 1,
+					eventView : true
+                }),
+                contentType: "application/json; charset=UTF-8"
+            }).done(function() {
+				current.children("i").hide();
+			});
+
+			}, 1000, $(this));
+
+		});
+		$("#tester_mystromswitch_api").on("click", function () {
+			self.settings.saveData();
+			$(this).children("i").show();
+			setTimeout(function (current) {
+			$.ajax({
+                url: API_BASEURL + "plugin/mystromswitch",
+                type: "POST",
+                dataType: "json",
+                data: JSON.stringify({
+                    command: "shutdown",
+					mode: 2,
+					eventView : true
+                }),
+                contentType: "application/json; charset=UTF-8"
+            }).done(function() {
+				current.children("i").hide();
+			});
+			}, 1000, $(this));
+
+		});
+
+		$("#tester_mystromswitch_api_custom").on("click", function () {
+			self.settings.saveData();
+			$(this).children("i").show();
+			setTimeout(function (current) {
+			$.ajax({
+                url: API_BASEURL + "plugin/mystromswitch",
+                type: "POST",
+                dataType: "json",
+                data: JSON.stringify({
+                    command: "shutdown",
+					mode: 3,
+					eventView : true
+                }),
+                contentType: "application/json; charset=UTF-8"
+            }).done(function() {
+				current.children("i").hide();
+			});
+			}, 1000, $(this));
+
+		});
+		self.listOffMode = [
+			{"id" : "#mystromswitch_mode_shutdown_gcode"},
+			{"id" : "#mystromswitch_mode_shutdown_api"},
+			{"id" : "#mystromswitch_mode_shutdown_api_custom"},
+		]
+		self.listOffHTTPMethode = [
+			{"id" : "#mystromswitch_api_custom_GET"},
+            {"id" : "#mystromswitch_api_custom_POST"},
+            {"id" : "#mystromswitch_api_custom_PUT"}
+		]
+		self.eventChangeCheckToRadio("#mystromswitch_mode_shutdown_gcode", self.listOffMode);
+		self.eventChangeCheckToRadio("#mystromswitch_mode_shutdown_api", self.listOffMode);
+		self.eventChangeCheckToRadio("#mystromswitch_mode_shutdown_api_custom", self.listOffMode);
+
+		self.eventChangeCheckToRadio("#mystromswitch_api_custom_GET", self.listOffHTTPMethode);
+        self.eventChangeCheckToRadio("#mystromswitch_api_custom_POST", self.listOffHTTPMethode);
+        self.eventChangeCheckToRadio("#mystromswitch_api_custom_PUT", self.listOffHTTPMethode);
+
         // Hack to remove automatically added Cancel button
         // See https://github.com/sciactive/pnotify/issues/141
         //PNotify.prototype.options.confirm.buttons = [];
@@ -33,7 +140,7 @@ $(function() {
                     promptTrigger: true,
                     click: function(notice, value){
                         notice.remove();
-                 
+
                     }
                 }]
             },
@@ -45,7 +152,7 @@ $(function() {
                 history: false
             }
         };
-        
+
         //for touch ui
 		self.touchUIMoveElement = function (self, counter) {
 			var hash = window.location.hash;
@@ -71,10 +178,10 @@ $(function() {
 			} else {
 				self.testButtonChangeStatus(false);
 			}
-			 
-			
+
+
 		};
-		
+
 		self.onUserLoggedIn = function() {
 			$.ajax({
                     url: API_BASEURL + "plugin/mystromswitch",
@@ -96,13 +203,21 @@ $(function() {
 				contentType: "application/json; charset=UTF-8"
 			}).done(function(data, textStatus, jqXHR ){
 				this.mystromswitchEnabled(data == "True" ? true : false);
-			})	
+			})
 		}
-		
+
 		self.onUserLoggedOut = function() {
 		}
 
-		
+		self.onEventPrinterStateChanged = function(payload) {
+        			if (payload.state_id == "PRINTING" || payload.state_id == "PAUSED"){
+        				self.testButtonChangeStatus(true);
+        			} else {
+        				self.testButtonChangeStatus(false);
+        			}
+        		}
+
+
         self.onmystromswitchEvent = function() {
             if (self.mystromswitchEnabled()) {
                 $.ajax({
@@ -137,15 +252,25 @@ $(function() {
             }
 
 			 self.mystromswitchEnabled(data.mystromswitchEnabled);
+            if (data.type == "timeout") {
+                if ((data.timeout_value != null) && (data.timeout_value > 0)) {
+                    self.timeoutPopupOptions.text = self.timeoutPopupText + data.timeout_value;
                 if (data.power != null) {
                     self.timeoutPopupOptions.text = self.timeoutPopupText + data.power;
                     if (typeof self.timeoutPopup != "undefined") {
                         self.timeoutPopup.update(self.timeoutPopupOptions);
                     } else {
                         self.timeoutPopup = new PNotify(self.timeoutPopupOptions);
+                        self.timeoutPopup.get().on('pnotify.cancel', function() {self.abortShutdown(true);});
                         self.timeoutPopup.get().on('pnotify.cancel', function() {});
                     }
+                } else {
+                    if (typeof self.timeoutPopup != "undefined") {
+                        self.timeoutPopup.remove();
+                        self.timeoutPopup = undefined;
+                    }
                 }
+            }
         }
 
         self.abortShutdown = function(abortShutdownValue) {
@@ -170,3 +295,4 @@ $(function() {
 		$(".sidebar_plugin_mystromswitch").get(0)
     ]);
 });
+
