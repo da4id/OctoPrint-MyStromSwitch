@@ -79,6 +79,9 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         self._logger.info("on_settings_load")
         self.initialize()
 
+    def on_settings_migrate(self, target, current):
+        pass
+
     def get_settings_version(self):
         return 1
 

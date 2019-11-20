@@ -217,7 +217,6 @@ $(function() {
         			}
         		}
 
-
         self.onmystromswitchEvent = function() {
             if (self.mystromswitchEnabled()) {
                 $.ajax({
@@ -255,14 +254,11 @@ $(function() {
             if (data.type == "timeout") {
                 if ((data.timeout_value != null) && (data.timeout_value > 0)) {
                     self.timeoutPopupOptions.text = self.timeoutPopupText + data.timeout_value;
-                if (data.power != null) {
-                    self.timeoutPopupOptions.text = self.timeoutPopupText + data.power;
                     if (typeof self.timeoutPopup != "undefined") {
                         self.timeoutPopup.update(self.timeoutPopupOptions);
                     } else {
                         self.timeoutPopup = new PNotify(self.timeoutPopupOptions);
                         self.timeoutPopup.get().on('pnotify.cancel', function() {self.abortShutdown(true);});
-                        self.timeoutPopup.get().on('pnotify.cancel', function() {});
                     }
                 } else {
                     if (typeof self.timeoutPopup != "undefined") {
