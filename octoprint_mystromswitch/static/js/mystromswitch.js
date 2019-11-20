@@ -142,9 +142,8 @@ $(function() {
             }
 
 			 self.mystromswitchEnabled(data.mystromswitchEnabled);
-            if (data.type == "timeout") {
-                if ((data.timeout_value != null) && (data.timeout_value > 0)) {
-                    self.timeoutPopupOptions.text = self.timeoutPopupText + data.timeout_value;
+                if (data.power != null) {
+                    self.timeoutPopupOptions.text = self.timeoutPopupText + data.power;
                     if (typeof self.timeoutPopup != "undefined") {
                         self.timeoutPopup.update(self.timeoutPopupOptions);
                     } else {
@@ -157,7 +156,6 @@ $(function() {
                         self.timeoutPopup = undefined;
                     }
                 }
-            }
         }
 
         self.abortShutdown = function(abortShutdownValue) {
