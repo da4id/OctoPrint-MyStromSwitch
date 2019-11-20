@@ -24,8 +24,6 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         self.ctx.check_hostname = False
         self.ctx.verify_mode = ssl.CERT_NONE
 
-        self.initialize()
-
     def initialize(self):
         self.ip = self._settings.get(["ip"])
         self._logger.debug("ip: %s" % self.ip)
@@ -70,6 +68,16 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
 
     def on_shutdown(self):
         self._logger.info("Hello World!")
+
+    def on_settings_load(self):
+        self._logger.info("on_settings_load")
+        self.initialize()
+
+    def on_settings_migrate(self, target, current):
+        pass
+
+    def get_settings_version(self):
+        return 1
 
     def get_settings_defaults(self):
         return dict(
