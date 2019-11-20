@@ -55,13 +55,11 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             self._timer.start()
 
     def _timer_task(self):
-        self._logger.debug("timer_task")
         if self.ip is not None:
-            self._logger.debug("send Request")
             try:
                 request = requests.get(
                     'http://{}/report'.format(self.ip), timeout=1)
-                self._logger.debug(request.json())
+                self._logger.info(request.json())
                 # self._plugin_manager.send_plugin_message(self._identifier,
                 #                                         request.json())
             except (requests.exceptions.ConnectionError, ValueError):
@@ -75,14 +73,6 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
 
     def on_shutdown(self):
         self._logger.info("Hello World!")
-
-    def on_settings_load(self):
-        self._logger.info("on_settings_load")
-        self.initialize()
-
-    def on_settings_initialized(self):
-        self._logger.info("on_settings_initialized")
-        self.initialize()
 
     def on_settings_migrate(self, target, current):
         pass
