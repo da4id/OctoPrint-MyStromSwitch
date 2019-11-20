@@ -9,7 +9,6 @@ $(function() {
 
         self.mystromswitchEnabled = ko.observable();
 
-
 		self.testButtonChangeStatus = function (stat) {
 			$("#tester_mystromswitch_gcode").prop("disabled", stat);
 			$("#tester_mystromswitch_api").prop("disabled", stat);
@@ -291,4 +290,3 @@ $(function() {
 		$(".sidebar_plugin_mystromswitch").get(0)
     ]);
 });
-

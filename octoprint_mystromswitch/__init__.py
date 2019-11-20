@@ -15,7 +15,6 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                           octoprint.plugin.ShutdownPlugin):
 
     def __init__(self):
-        self._pollTimer = None
         self.ip = None
         self.intervall = 1
         self._timer = None
@@ -74,10 +73,6 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
 
     def on_shutdown(self):
         self._logger.info("Hello World!")
-
-    def on_settings_load(self):
-        self._logger.info("on_settings_load")
-        self.initialize()
 
     def on_settings_migrate(self, target, current):
         pass
