@@ -47,6 +47,10 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             self._timer.cancel()
             self._logger.info("Canceling Timer")
 
+        self._logger.info(self.ip)
+        self._logger.info(self.intervall)
+
+
         self._logger.info("Starting timer.")
         self._timer = RepeatedTimer(self.intervall, self._timer_task)
         self._timer.start()
@@ -62,7 +66,8 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             except (requests.exceptions.ConnectionError, ValueError):
                 self._logger.info('Connection Error Host: {}'.format(self.ip))
             # Do all Staff here
-            pass
+        else:
+            self._logger.info("Ip is None")
 
     def on_after_startup(self):
         self._logger.info("Hello World!")
