@@ -11,7 +11,7 @@ $(function() {
 
         self.onToggleRelayEvent = function(){
             $.ajax({
-                url: API_BASEURL + "/api/plugin/mystromswitch",
+                url: API_BASEURL + "/plugin/mystromswitch",
                 type: "POST",
                 dataType: "json",
                 data: JSON.stringify({
