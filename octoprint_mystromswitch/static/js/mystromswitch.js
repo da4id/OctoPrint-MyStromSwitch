@@ -22,27 +22,7 @@ $(function() {
         }
 
         self.onmystromswitchEvent = function() {
-            if (self.onOffButtonEnabled()) {
-                $.ajax({
-                    url: API_BASEURL + "plugin/mystromswitch",
-                    type: "POST",
-                    dataType: "json",
-                    data: JSON.stringify({
-                        command: "enableRelais",
-                    }),
-                    contentType: "application/json; charset=UTF-8"
-                })
-            } else {
-                $.ajax({
-                    url: API_BASEURL + "plugin/mystromswitch",
-                    type: "POST",
-                    dataType: "json",
-                    data: JSON.stringify({
-                        command: "disableRelais",
-                    }),
-                    contentType: "application/json; charset=UTF-8"
-                })
-            }
+
         }
 
         self.onOffButtonEnabled.subscribe(self.onmystromswitchEvent, self);
