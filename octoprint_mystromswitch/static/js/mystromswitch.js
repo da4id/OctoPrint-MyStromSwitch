@@ -6,7 +6,7 @@ $(function() {
         self.settings = parameters[1];
         self.printer = parameters[2];
 
-        self.mystromswitchEnabled = ko.observable();
+        self.onOffButtonEnabled = ko.observable();
         self.mystromswitchPowerValue = document.getElementById("mystromswitchPowerValue")
 
         self.onToggleRelayEvent = function(){
@@ -22,7 +22,7 @@ $(function() {
         }
 
         self.onmystromswitchEvent = function() {
-            if (self.mystromswitchEnabled()) {
+            if (self.onOffButtonEnabled()) {
                 $.ajax({
                     url: API_BASEURL + "plugin/mystromswitch",
                     type: "POST",
@@ -45,13 +45,13 @@ $(function() {
             }
         }
 
-        self.mystromswitchEnabled.subscribe(self.onmystromswitchEvent, self);
+        self.onOffButtonEnabled.subscribe(self.onmystromswitchEvent, self);
 
         self.onDataUpdaterPluginMessage = function(plugin, data) {
             if (plugin != "mystromswitch" && plugin != "octoprint_mystromswitch") {
                 return;
             }
-			self.mystromswitchEnabled(data.mystromswitchEnabled);
+			self.onOffButtonEnabled(data.onOffButtonEnabled);
 			if(data.relay == false){
 			    self.mystromswitchPowerValue.innerHTML = "Relay is off";
 			} else if (data.power != null) {
