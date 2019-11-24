@@ -12,11 +12,14 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                           octoprint.plugin.AssetPlugin,
                           octoprint.plugin.TemplatePlugin,
                           octoprint.plugin.StartupPlugin,
+                          octoprint.plugin.SimpleApiPlugin,
                           octoprint.plugin.ShutdownPlugin):
 
     def __init__(self):
         self.ip = None
         self.intervall = 1
+        self.onOffButtonEnabled = False
+
         self._timer = None
 
         self.ctx = ssl.create_default_context()
@@ -29,6 +32,9 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
 
         self.intervall = self._settings.get_int(["intervall"])
         self._logger.debug("intervall: %s" % self.intervall)
+
+        self.onOffButtonEnabled = self._settings.get_boolean(["onOffButtonEnabled"])
+        self._logger.debug("onOffButtonEnabled: %s" % self.onOffButtonEnabled)
         self._timer_start()
 
     def get_assets(self):
@@ -63,6 +69,38 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         else:
             self._logger.info("Ip is None")
 
+    def _setRelaisState(self, newState):
+        try:
+            value = '0'
+            if (newState == True):
+                value = '1'
+            request = requests.get(
+                'http://{}/relay'.format(self.ip), params={'state': value}, timeout=1)
+            if not request.status_code == 200:
+                self._logger.info("Could not set new Relais State, Http Status Code: {}".format(request.status_code))
+        except requests.exceptions.ConnectionError:
+            self._logger.info("Error during set Relais state")
+
+    def _toggleRelay(self):
+        try:
+            request = requests.get(
+                'http://{}/toggle'.format(self.ip), timeout=1)
+            if not request.status_code == 200:
+                self._logger.info("Could not toggle Relay State, Http Status Code: {}".format(request.status_code))
+        except requests.exceptions.ConnectionError:
+            self._logger.info("Error during toggle Relais state")
+
+    def on_api_command(self, command, data):
+        if command == "enableRelais":
+            self._logger.info("enableRelais")
+            self._setRelaisState(True)
+        elif command == "disableRelais":
+            self._logger.info("disableRelais")
+            self._setRelaisState(False)
+        elif command == "toggleRelais":
+            self._logger.info("toggleRelais")
+            self._toggleRelay()
+
     def on_after_startup(self):
         pass
 
@@ -70,15 +108,19 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         pass
 
     def on_settings_migrate(self, target, current):
-        pass
+        if target > current:
+            if current <= 1:
+                self.onOffButtonEnabled = False
+                pass
 
     def get_settings_version(self):
-        return 1
+        return 2
 
     def get_settings_defaults(self):
         return dict(
             ip=None,
-            intervall=1
+            intervall=1,
+            onOffButtonEnabled=False
         )
 
     def on_settings_save(self, data):

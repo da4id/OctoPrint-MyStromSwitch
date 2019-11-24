@@ -9,6 +9,21 @@ $(function() {
         self.mystromswitchEnabled = ko.observable();
         self.mystromswitchPowerValue = document.getElementById("mystromswitchPowerValue")
 
+        self.mystromToggleButton = document.getElementById("myStromRelaisToggleButton")
+
+        self.onToggleRelayEvent = function(){
+            $.ajax({
+                url: API_BASEURL + "plugin/mystromswitch",
+                type: "POST",
+                dataType: "json",
+                data: JSON.stringify({
+                    command: "toggleRelais",
+                }),
+                contentType: "application/json; charset=UTF-8"
+            })
+        }
+        self.mystromToggleButton.addEventListener("click",self.onToggleRelayEvent)
+
         self.onmystromswitchEvent = function() {
             if (self.mystromswitchEnabled()) {
                 $.ajax({
@@ -16,8 +31,7 @@ $(function() {
                     type: "POST",
                     dataType: "json",
                     data: JSON.stringify({
-                        command: "enable",
-						eventView : false
+                        command: "enableRelais",
                     }),
                     contentType: "application/json; charset=UTF-8"
                 })
@@ -27,8 +41,7 @@ $(function() {
                     type: "POST",
                     dataType: "json",
                     data: JSON.stringify({
-                        command: "disable",
-						eventView : false
+                        command: "disableRelais",
                     }),
                     contentType: "application/json; charset=UTF-8"
                 })
@@ -42,9 +55,11 @@ $(function() {
                 return;
             }
 			self.mystromswitchEnabled(data.mystromswitchEnabled);
-                if (data.power != null) {
-                    self.mystromswitchPowerValue.innerHTML = "Power Consumption "+data.power.toFixed(2)+"W"
-                }
+			if(data.relay == false){
+			    self.mystromswitchPowerValue.innerHTML = "Relay is off";
+			} else if (data.power != null) {
+                self.mystromswitchPowerValue.innerHTML = "Power Consumption "+data.power.toFixed(1)+"W";
+            }
         }
     }
 
