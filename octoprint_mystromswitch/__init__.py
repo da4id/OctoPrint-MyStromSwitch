@@ -34,7 +34,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         self._logger.debug("intervall: %s" % self.intervall)
 
         self.onOffButtonEnabled = self._settings.get_boolean(["onOffButtonEnabled"])
-        self._logger.debug("onOffButtonEnabled: %s" % self.onOffButtonEnabled)
+        self._logger.info("onOffButtonEnabled: %s" % self.onOffButtonEnabled)
         self._timer_start()
 
     def get_assets(self):
