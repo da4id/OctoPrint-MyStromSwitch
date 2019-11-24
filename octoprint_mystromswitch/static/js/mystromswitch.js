@@ -9,8 +9,6 @@ $(function() {
         self.mystromswitchEnabled = ko.observable();
         self.mystromswitchPowerValue = document.getElementById("mystromswitchPowerValue")
 
-        self.mystromToggleButton = document.getElementById("myStromRelaisToggleButton")
-
         self.onToggleRelayEvent = function(){
             $.ajax({
                 url: API_BASEURL + "plugin/mystromswitch",
@@ -22,7 +20,6 @@ $(function() {
                 contentType: "application/json; charset=UTF-8"
             })
         }
-        self.mystromToggleButton.addEventListener("click",self.onToggleRelayEvent)
 
         self.onmystromswitchEvent = function() {
             if (self.mystromswitchEnabled()) {

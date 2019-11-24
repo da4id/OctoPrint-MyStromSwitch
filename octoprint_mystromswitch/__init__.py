@@ -101,6 +101,13 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             self._logger.info("toggleRelais")
             self._toggleRelay()
 
+    def get_api_commands(self):
+        return dict(
+            enableRelais=[],
+            disableRelais=[],
+            toggleRelais=[]
+        )
+
     def on_after_startup(self):
         pass
 
