@@ -84,40 +84,56 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             self._logger.info("Ip is None")
 
     def _setRelaisState(self, newState):
-        try:
-            value = '0'
-            if (newState == True):
-                value = '1'
-            request = requests.get(
-                'http://{}/relay'.format(self.ip), params={'state': value}, timeout=1)
-            if not request.status_code == 200:
-                self._logger.info("Could not set new Relais State, Http Status Code: {}".format(request.status_code))
-        except requests.exceptions.ConnectionError:
-            self._logger.info("Error during set Relais state")
+        nbRetry = 0
+        value = '0'
+        if (newState == True):
+            value = '1'
+        while nbRetry < 3:
+            try:
+                request = requests.get(
+                    'http://{}/relay'.format(self.ip), params={'state': value}, timeout=1)
+                if request.status_code == 200:
+                    return
+                else:
+                    self._logger.info(
+                        "Could not set new Relais State, Http Status Code: {}".format(request.status_code))
+            except requests.exceptions.ConnectionError:
+                self._logger.info("Error during set Relais state")
+            nbRetry = nbRetry + 1
 
     # Sets the switch to a specific inverse newState,
     # waits for a specified amount of time (max 3h),
     # then sets the the switch to the newState.
     def _powerCycleRelais(self, newState, time):
-        try:
-            value = 'on'
-            if (newState == True):
-                value = 'off'
-            request = requests.post(
-                'http://{}/timer'.format(self.ip), params={'mode': value, 'time': time}, timeout=1)
-            if not request.status_code == 200:
-                self._logger.info("Could not powerCycle Relais, Http Status Code: {}".format(request.status_code))
-        except requests.exceptions.ConnectionError:
-            self._logger.info("Error during powerCycle Relais")
+        nbRetry = 0
+        value = 'on'
+        if newState:
+            value = 'off'
+        while nbRetry < 3:
+            try:
+                request = requests.post(
+                    'http://{}/timer'.format(self.ip), params={'mode': value, 'time': time}, timeout=1)
+                if request.status_code == 200:
+                    return
+                else:
+                    self._logger.info("Could not powerCycle Relais, Http Status Code: {}".format(request.status_code))
+            except requests.exceptions.ConnectionError:
+                self._logger.info("Error during powerCycle Relais")
+            nbRetry = nbRetry + 1
 
     def _toggleRelay(self):
-        try:
-            request = requests.get(
-                'http://{}/toggle'.format(self.ip), timeout=1)
-            if not request.status_code == 200:
-                self._logger.info("Could not toggle Relay State, Http Status Code: {}".format(request.status_code))
-        except requests.exceptions.ConnectionError:
-            self._logger.info("Error during toggle Relais state")
+        nbRetry = 0
+        while nbRetry < 3:
+            try:
+                request = requests.get(
+                    'http://{}/toggle'.format(self.ip), timeout=1)
+                if request.status_code == 200:
+                    return
+                else:
+                    self._logger.info("Could not toggle Relay State, Http Status Code: {}".format(request.status_code))
+            except requests.exceptions.ConnectionError:
+                self._logger.info("Error during toggle Relais state")
+            nbRetry = nbRetry + 1
 
     def on_api_command(self, command, data):
         if command == "enableRelais":
