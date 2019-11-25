@@ -104,7 +104,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             if (newState == True):
                 value = '1'
             request = requests.post(
-                'http://{}/relay'.format(self.ip), json={'mode': value, 'time': time}, timeout=1)
+                'http://{}/timer'.format(self.ip), data={'mode': value, 'time': time}, timeout=1)
             if not request.status_code == 200:
                 self._logger.info("Could not powerCycle Relais, Http Status Code: {}".format(request.status_code))
         except requests.exceptions.ConnectionError:
@@ -148,7 +148,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                 self._logger.info("Turn on Relais off Shutdown")
                 self._setRelaisState(False)
             else:
-                self._logger.info("Turn on Relais off Shutdown Delayed")
+                self._logger.info("Turn off Relais on Shutdown Delayed")
                 self._powerCycleRelais(False, self.powerOffDelay)
 
     def on_settings_migrate(self, target, current):
