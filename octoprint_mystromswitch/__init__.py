@@ -104,7 +104,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             if (newState == True):
                 value = '1'
             request = requests.post(
-                'http://{}/timer'.format(self.ip), data={'mode': value, 'time': time}, timeout=1)
+                'http://{}/timer'.format(self.ip), json={'mode': value, 'time': time}, timeout=1)
             if not request.status_code == 200:
                 self._logger.info("Could not powerCycle Relais, Http Status Code: {}".format(request.status_code))
         except requests.exceptions.ConnectionError:
