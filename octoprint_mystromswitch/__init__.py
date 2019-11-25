@@ -100,11 +100,11 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
     # then sets the the switch to the newState.
     def _powerCycleRelais(self, newState, time):
         try:
-            value = '0'
+            value = 'off'
             if (newState == True):
-                value = '1'
+                value = 'on'
             request = requests.post(
-                'http://{}/timer'.format(self.ip), json={'mode': value, 'time': time}, timeout=1)
+                'http://{}/timer'.format(self.ip), params={'mode': value, 'time': time}, timeout=1)
             if not request.status_code == 200:
                 self._logger.info("Could not powerCycle Relais, Http Status Code: {}".format(request.status_code))
         except requests.exceptions.ConnectionError:
