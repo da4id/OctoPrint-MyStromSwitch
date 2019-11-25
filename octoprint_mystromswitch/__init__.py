@@ -87,7 +87,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                         # Energy in Wh
                         self.energy = self.energy + (intervall * data["power"] / 3600)
                     self.lastTimeStamp = timestamp
-                    data["energy"] = self.powerConsumed
+                    data["energy"] = self.energy
                     data["onOffButtonEnabled"] = self.onOffButtonEnabled
                     self._plugin_manager.send_plugin_message(self._identifier, data)
             except (requests.exceptions.ConnectionError, ValueError):
