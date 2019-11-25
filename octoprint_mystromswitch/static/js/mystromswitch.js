@@ -8,6 +8,7 @@ $(function() {
 
         self.onOffButtonEnabled = ko.observable();
         self.mystromswitchPowerValue = document.getElementById("mystromswitchPowerValue")
+        self.mystromswitchEnergyValue = document.getElementById("mystromswitchEnergyValue")
 
         self.onToggleRelayEvent = function(){
             $.ajax({
@@ -32,6 +33,7 @@ $(function() {
                 return;
             }
 			self.onOffButtonEnabled(data.onOffButtonEnabled);
+			self.mystromswitchEnergyValue.innerHTML = "Energy: "+data.energy.toFixed(1)+"Wh"
 			if(data.relay == false){
 			    self.mystromswitchPowerValue.innerHTML = "Relay is off";
 			} else if (data.power != null) {

@@ -2,6 +2,7 @@
 from __future__ import absolute_import
 
 import ssl
+import time
 
 import octoprint.plugin
 import requests
@@ -24,6 +25,9 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         self.powerOffDelay = 0
 
         self._timer = None
+
+        self.energy = 0
+        self.lastTimeStamp = 0
 
         self.ctx = ssl.create_default_context()
         self.ctx.check_hostname = False
@@ -75,9 +79,17 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             try:
                 request = requests.get(
                     'http://{}/report'.format(self.ip), timeout=1)
-                data = request.json()
-                data["onOffButtonEnabled"] = self.onOffButtonEnabled
-                self._plugin_manager.send_plugin_message(self._identifier, data)
+                if request.status_code == 200:
+                    timestamp = time.time()
+                    data = request.json()
+                    if not self.lastTimeStamp == 0:
+                        intervall = timestamp - self.lastTimeStamp
+                        # Energy in Wh
+                        self.energy = self.energy + (intervall * data["power"] / 3600)
+                    self.lastTimeStamp = timestamp
+                    data["energy"] = self.powerConsumed
+                    data["onOffButtonEnabled"] = self.onOffButtonEnabled
+                    self._plugin_manager.send_plugin_message(self._identifier, data)
             except (requests.exceptions.ConnectionError, ValueError):
                 self._logger.info('Connection Error Host: {}'.format(self.ip))
         else:
