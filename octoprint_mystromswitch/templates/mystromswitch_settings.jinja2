@@ -21,8 +21,31 @@
     <div class="control-group">
 	    <div class="controls">
 			<label class="checkbox">
-		    	<input type="checkbox"  id="mystromswitchShowToggleButton" data-bind="checked: settings.plugins.mystromswitch.onOffButtonEnabled">Toggle Button Enabled
+		    	<input type="checkbox" data-bind="checked: settings.plugins.mystromswitch.onOffButtonEnabled">Toggle Button Enabled
 			</label>
 		</div>
 	</div>
+
+	<div class="control-group">
+	    <div class="controls">
+			<label class="checkbox">
+		    	<input type="checkbox" data-bind="checked: settings.plugins.mystromswitch.powerOnOnStart">Turn relais ON on Octoprint start
+			</label>
+		</div>
+	</div>
+
+	<div class="control-group">
+	    <div class="controls">
+			<label class="checkbox">
+		    	<input type="checkbox" data-bind="checked: settings.plugins.mystromswitch.powerOffOnShutdown">Turn relais OFF on Octoprint shutdown
+			</label>
+		</div>
+	</div>
+
+	<div class="control-group">
+        <label class="control-label">{{ _('Turn Relais Off Delay') }}</label>
+        <div class="controls">
+            <input type="number" class="input-block-level" data-bind="value: settings.plugins.mystromswitch.powerOffDelay">
+        </div>
+    </div>
 </form>

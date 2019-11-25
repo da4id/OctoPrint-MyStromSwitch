@@ -19,6 +19,9 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         self.ip = None
         self.intervall = 1
         self.onOffButtonEnabled = False
+        self.powerOnOnStart = False
+        self.powerOffOnShutdown = False
+        self.powerOffDelay = 0
 
         self._timer = None
 
@@ -34,7 +37,17 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         self._logger.debug("intervall: %s" % self.intervall)
 
         self.onOffButtonEnabled = self._settings.get_boolean(["onOffButtonEnabled"])
-        self._logger.info("onOffButtonEnabled: %s" % self.onOffButtonEnabled)
+        self._logger.debug("onOffButtonEnabled: %s" % self.onOffButtonEnabled)
+
+        self.powerOnOnStart = self._settings.get_boolean(["powerOnOnStart"])
+        self._logger.debug("powerOnOnStart: %s" % self.powerOnOnStart)
+
+        self.powerOffOnShutdown = self._settings.get_boolean(["powerOffOnShutdown"])
+        self._logger.debug("powerOffOnShutdown: %s" % self.powerOffOnShutdown)
+
+        self.powerOffDelay = self._settings.get_int(["powerOffDelay"])
+        self._logger.debug("powerOffDelay: %s" % self.powerOffDelay)
+
         self._timer_start()
 
     def get_assets(self):
@@ -82,6 +95,21 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         except requests.exceptions.ConnectionError:
             self._logger.info("Error during set Relais state")
 
+    # Sets the switch to a specific inverse newState,
+    # waits for a specified amount of time (max 3h),
+    # then sets the the switch to the newState.
+    def _powerCycleRelais(self, newState, time):
+        try:
+            value = '0'
+            if (newState == True):
+                value = '1'
+            request = requests.post(
+                'http://{}/relay'.format(self.ip), json={'mode': value, 'time': time}, timeout=1)
+            if not request.status_code == 200:
+                self._logger.info("Could not powerCycle Relais, Http Status Code: {}".format(request.status_code))
+        except requests.exceptions.ConnectionError:
+            self._logger.info("Error during powerCycle Relais")
+
     def _toggleRelay(self):
         try:
             request = requests.get(
@@ -110,25 +138,37 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         )
 
     def on_after_startup(self):
-        pass
+        if self.powerOnOnStart:
+            self._setRelaisState(True)
 
     def on_shutdown(self):
-        pass
+        if self.powerOffOnShutdown:
+            if self.powerOffDelay <= 0:
+                self._setRelaisState(False)
+            else:
+                self._powerCycleRelais(False, self.powerOffDelay)
 
     def on_settings_migrate(self, target, current):
         if target > current:
             if current <= 1:
                 self.onOffButtonEnabled = False
                 pass
+            if current <= 2:
+                self.powerOnOnStart = False,
+                self.powerOffOnShutdown = False,
+                self.powerOffDelay = 0
 
     def get_settings_version(self):
-        return 2
+        return 3
 
     def get_settings_defaults(self):
         return dict(
             ip=None,
             intervall=1,
-            onOffButtonEnabled=False
+            onOffButtonEnabled=False,
+            owerOnOnStart=False,
+            powerOffOnShutdown=False,
+            powerOffDelay=0
         )
 
     def on_settings_save(self, data):
