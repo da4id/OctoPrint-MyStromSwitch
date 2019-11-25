@@ -139,13 +139,16 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
 
     def on_after_startup(self):
         if self.powerOnOnStart:
+            self._logger.info("Turn on Relais on Start")
             self._setRelaisState(True)
 
     def on_shutdown(self):
         if self.powerOffOnShutdown:
             if self.powerOffDelay <= 0:
+                self._logger.info("Turn on Relais off Shutdown")
                 self._setRelaisState(False)
             else:
+                self._logger.info("Turn on Relais off Shutdown Delayed")
                 self._powerCycleRelais(False, self.powerOffDelay)
 
     def on_settings_migrate(self, target, current):
