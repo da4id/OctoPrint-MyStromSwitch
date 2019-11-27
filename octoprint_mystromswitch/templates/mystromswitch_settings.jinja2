@@ -14,7 +14,7 @@
                 <input type="number" class="input-mini text-right" data-bind="value: settings.plugins.mystromswitch.intervall">
                 <span class="add-on">seconds</span>
             </div>
-            <span class="help-block"><small>{{ _('Intervall in seconds where relais state, power and engergy consumtion are refreshed') }}</small></span>
+            <span class="help-block"><small>{{ _('Intervall in seconds where relays state, power and energy consumption are refreshed') }}</small></span>
         </div>
     </div>
 
@@ -26,7 +26,7 @@
 			<label class="checkbox">
 		    	<input type="checkbox" data-bind="checked: settings.plugins.mystromswitch.onOffButtonEnabled">Toggle Button Enabled
 			</label>
-			<span class="help-block"><small>{{ _('Shows an on/off Button on the left side to switch the relais on or off. This setting is only recomended if only your printer is switched on/off') }}</small></span>
+			<span class="help-block"><small>{{ _('Shows an on/off Button on the left side to switch the relays on or off. This setting is only recommended if only your printer is switched on/off') }}</small></span>
 		</div>
 	</div>
 
@@ -35,8 +35,8 @@
 			<label class="checkbox">
 		    	<input type="checkbox" data-bind="checked: settings.plugins.mystromswitch.powerOnOnStart">Turn relais ON on Octoprint start
 			</label>
+		    <span class="help-block"><small>{{ _('This setting switches your mySwitch on if Octoprint is starting up. Turn relays OFF on Octoprint shutdown could also be interesting for you') }}</small></span>
 		</div>
-		<span class="help-block"><small>{{ _('This setting switches your mySwitch on if Octoprint is starting up. Turn relais OFF on Octoprint shutdown could also be interesting for you') }}</small></span>
 	</div>
 
     <hr>
@@ -47,8 +47,8 @@
 			<label class="checkbox">
 		    	<input type="checkbox" data-bind="checked: settings.plugins.mystromswitch.powerOffOnShutdown">Turn relais OFF on Octoprint shutdown
 			</label>
+		    <span class="help-block"><small>{{ _('This setting switches your mySwitch off if Octoprint is shutting down. If your Raspberry Pi is also switched by the relays its recommended to use an turn relay off delay of 60 seconds or more. Keep in mind this switches also off if you restart Octoprint service!') }}</small></span>
 		</div>
-		<span class="help-block"><small>{{ _('This setting switches your mySwitch off if Octoprint is shuting down. If your Raspberry Pi is also switched by the relais its recomended to user an Relais Off Delay of 1 Minute or more. Keep in mind this switches also off if you restart Octoprint service') }}</small></span>
 	</div>
 
 	<div class="control-group">
@@ -58,7 +58,7 @@
                 <input type="number" class="input-block-level" data-bind="value: settings.plugins.mystromswitch.powerOffDelay">
                 <span class="add-on">seconds</span>
             </div>
-            <span class="help-block"><small>{{ _('Delay in seconds after octoprint is shutted down to switch off Relais. This settings is recommended to make sure that Raspberry Pi is completly shutted down when you turn off. Switching Power off when your Raspberry Pi is running could lead to unreparable damage to your SD Card.') }}</small></span>
+            <span class="help-block"><small>{{ _('Delay in seconds after octoprint is shutted down to switch off relays. This settings is recommended to make sure that Raspberry Pi is completely shutted down when you switch power off. Switching off when your Raspberry Pi is running could lead to unrepairable damage to your SD Card!') }}</small></span>
         </div>
     </div>
 </form>
