@@ -197,10 +197,15 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             ip=None,
             intervall=1,
             onOffButtonEnabled=False,
-            owerOnOnStart=False,
+            powerOnOnStart=False,
             powerOffOnShutdown=False,
             powerOffDelay=0
         )
+
+    def get_settings_restricted_paths(self):
+        return dict(admin=[
+            ['ip']
+        ])
 
     def on_settings_save(self, data):
         self._logger.info("on_settings_save")
