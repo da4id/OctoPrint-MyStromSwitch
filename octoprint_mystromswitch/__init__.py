@@ -77,25 +77,28 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
     def _timer_task(self):
         if self.ip is not None:
             try:
-                request = requests.get(
-                    'http://{}/report'.format(self.ip), timeout=1)
-                self._logger.info("timer request finish")
-                if request.status_code == 200:
-                    self._logger.info("timer request OK, timestamp: " + str(time.time()) + " lastTimestamp: " + str(
-                        self.lastTimeStamp))
-                    timestamp = time.time()
-                    data = request.json()
-                    if not self.lastTimeStamp == 0:
-                        intervall = timestamp - self.lastTimeStamp
-                        # Energy in Wh
-                        self.energy = self.energy + (intervall * data["power"] / 3600)
-                        self._logger.info("Energy: " + self.energy)
-                    self.lastTimeStamp = timestamp
-                    data["energy"] = self.energy
-                    data["onOffButtonEnabled"] = self.onOffButtonEnabled
-                    self._plugin_manager.send_plugin_message(self._identifier, data)
-            except (requests.exceptions.ConnectionError, ValueError):
-                self._logger.info('Connection Error Host: {}'.format(self.ip))
+                try:
+                    request = requests.get(
+                        'http://{}/report'.format(self.ip), timeout=1)
+                    self._logger.info("timer request finish")
+                    if request.status_code == 200:
+                        self._logger.info("timer request OK, timestamp: " + str(time.time()) + " lastTimestamp: " + str(
+                            self.lastTimeStamp))
+                        timestamp = time.time()
+                        data = request.json()
+                        if not self.lastTimeStamp == 0:
+                            intervall = timestamp - self.lastTimeStamp
+                            # Energy in Wh
+                            self.energy = self.energy + (intervall * data["power"] / 3600)
+                            self._logger.info("Energy: " + str(self.energy))
+                        self.lastTimeStamp = timestamp
+                        data["energy"] = self.energy
+                        data["onOffButtonEnabled"] = self.onOffButtonEnabled
+                        self._plugin_manager.send_plugin_message(self._identifier, data)
+                except (requests.exceptions.ConnectionError, ValueError) as e:
+                    self._logger.info('Connection Error Host: {}, {}'.format(self.ip, e))
+            except Exception as exp:
+                self._logger.info(exp.message)
         else:
             self._logger.info("Ip is None")
 

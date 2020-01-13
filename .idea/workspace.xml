@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e2e0eec-b22e-4d48-8f24-196d1ed9b51a" name="Default Changelist" comment="#17 Logging zur Fehleranalyse eingebaut">
+    <list default="true" id="7e2e0eec-b22e-4d48-8f24-196d1ed9b51a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/octoprint_mystromswitch/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/octoprint_mystromswitch/__init__.py" afterDir="false" />
     </list>
@@ -47,20 +47,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574193087583</updated>
-    </task>
-    <task id="LOCAL-00004" summary="#5 Rest Api integration&#10;&#10;- Nullpointer fix">
-      <created>1574277496115</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1574277496115</updated>
-    </task>
-    <task id="LOCAL-00005" summary="#6 UI Updates senden und anzeigen&#10;&#10;- unnötigen Code entfernen, erster Versuch">
-      <created>1574279164975</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1574279164975</updated>
     </task>
     <task id="LOCAL-00006" summary="#6 UI Updates senden und anzeigen">
       <created>1574279821388</created>
@@ -391,7 +377,21 @@
       <option name="project" value="LOCAL" />
       <updated>1575192543311</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="#17 Logging zur Fehleranalyse eingebaut">
+      <created>1578938604039</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1578938604039</updated>
+    </task>
+    <task id="LOCAL-00054" summary="#17 Logging zur Fehleranalyse eingebaut">
+      <created>1578939868815</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1578939868816</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -443,6 +443,7 @@
     <MESSAGE value="#14 Einstellungen reorganisieren&#10;&#10;- Beschreibungen angepasst" />
     <MESSAGE value="#15 Beschreibung erstellen" />
     <MESSAGE value="#16 Codereview Octoprint Plugin Repo" />
-    <option name="LAST_COMMIT_MESSAGE" value="#16 Codereview Octoprint Plugin Repo" />
+    <MESSAGE value="#17 Logging zur Fehleranalyse eingebaut" />
+    <option name="LAST_COMMIT_MESSAGE" value="#17 Logging zur Fehleranalyse eingebaut" />
   </component>
 </project>
