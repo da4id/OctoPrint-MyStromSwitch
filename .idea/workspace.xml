@@ -48,13 +48,6 @@
       <option name="presentableId" value="Default" />
       <updated>1574193087583</updated>
     </task>
-    <task id="LOCAL-00006" summary="#6 UI Updates senden und anzeigen">
-      <created>1574279821388</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1574279821388</updated>
-    </task>
     <task id="LOCAL-00007" summary="Revert &quot;#6 UI Updates senden und anzeigen&quot;&#10;&#10;This reverts commit f83d4259">
       <created>1574280075129</created>
       <option name="number" value="00007" />
@@ -391,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578939868816</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="#17 Logging zur Fehleranalyse eingebaut">
+      <created>1578940345174</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1578940345174</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="UnknownFeatures">
