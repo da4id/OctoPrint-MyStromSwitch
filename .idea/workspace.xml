@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7e2e0eec-b22e-4d48-8f24-196d1ed9b51a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/octoprint_mystromswitch/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/octoprint_mystromswitch/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,13 +47,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574193087583</updated>
-    </task>
-    <task id="LOCAL-00011" summary="#6 UI Updates senden und anzeigen">
-      <created>1574280882951</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1574280882951</updated>
     </task>
     <task id="LOCAL-00012" summary="#6 UI Updates senden und anzeigen">
       <created>1574281255732</created>
@@ -391,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579190259362</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="#17 Logs aufgeräumt">
+      <created>1579192359403</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1579192359403</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="UnknownFeatures">
