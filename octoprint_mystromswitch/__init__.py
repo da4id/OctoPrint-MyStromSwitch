@@ -77,28 +77,34 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
     def _timer_task(self):
         if self.ip is not None:
             try:
-                request = requests.get(
-                    'http://{}/report'.format(self.ip), timeout=1)
-                if request.status_code == 200:
-                    timestamp = time.time()
-                    data = request.json()
-                    if not self.lastTimeStamp == 0:
-                        intervall = timestamp - self.lastTimeStamp
-                        # Energy in Wh
-                        self.energy = self.energy + (intervall * data["power"] / 3600)
-                    self.lastTimeStamp = timestamp
-                    data["energy"] = self.energy
-                    data["onOffButtonEnabled"] = self.onOffButtonEnabled
-                    self._plugin_manager.send_plugin_message(self._identifier, data)
-            except (requests.exceptions.ConnectionError, ValueError):
-                self._logger.info('Connection Error Host: {}'.format(self.ip))
+                try:
+                    request = requests.get(
+                        'http://{}/report'.format(self.ip), timeout=1)
+                    if request.status_code == 200:
+                        timestamp = time.time()
+                        data = request.json()
+                        if not self.lastTimeStamp == 0:
+                            intervall = timestamp - self.lastTimeStamp
+                            # Energy in Wh
+                            self.energy = self.energy + (intervall * data["power"] / 3600)
+                            self._logger.debug(
+                                "Energy: " + str(self.energy) + " interval: " + str(intervall) + " power: " + str(
+                                    data["power"]))
+                        self.lastTimeStamp = timestamp
+                        data["energy"] = self.energy
+                        data["onOffButtonEnabled"] = self.onOffButtonEnabled
+                        self._plugin_manager.send_plugin_message(self._identifier, data)
+                except (requests.exceptions.ConnectionError, ValueError) as e:
+                    self._logger.exception(e)
+            except Exception as exp:
+                self._logger.exception(exp)
         else:
             self._logger.info("Ip is None")
 
     def _setRelaisState(self, newState):
         nbRetry = 0
         value = '0'
-        if (newState == True):
+        if newState:
             value = '1'
         while nbRetry < 3:
             try:
@@ -123,14 +129,21 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             value = 'off'
         while nbRetry < 3:
             try:
-                request = requests.post(
-                    'http://{}/timer'.format(self.ip), params={'mode': value, 'time': time}, timeout=1)
-                if request.status_code == 200:
-                    return
-                else:
-                    self._logger.info("Could not powerCycle Relais, Http Status Code: {}".format(request.status_code))
-            except requests.exceptions.ConnectionError:
-                self._logger.info("Error during powerCycle Relais")
+                try:
+                    self._logger.info("try to send Powercycle Request")
+                    self._logger.info('http://{}/timer'.format(self.ip))
+                    request = requests.post(
+                        'http://{}/timer'.format(self.ip), params={'mode': value, 'time': time}, timeout=1)
+                    if request.status_code == 200:
+                        return
+                    else:
+                        self._logger.info(
+                            "Could not powerCycle Relais, Http Status Code: {}".format(request.status_code))
+                except requests.exceptions.ConnectionError as e:
+                    self._logger.exception(e)
+                    self._logger.info("Error during powerCycle Relais: " + str(e.message))
+            except Exception as exp:
+                self._logger.exception(exp)
             nbRetry = nbRetry + 1
 
     def _toggleRelay(self):
@@ -171,9 +184,10 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             self._setRelaisState(True)
 
     def on_shutdown(self):
+        self._logger.info("on_shutdown_event")
         if self.powerOffOnShutdown:
             if self.powerOffDelay <= 0:
-                self._logger.info("Turn on Relais off Shutdown")
+                self._logger.info("Turn off Relais on Shutdown")
                 self._setRelaisState(False)
             else:
                 self._logger.info("Turn off Relais on Shutdown Delayed")
