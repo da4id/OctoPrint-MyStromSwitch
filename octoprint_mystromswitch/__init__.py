@@ -87,7 +87,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                             intervall = timestamp - self.lastTimeStamp
                             # Energy in Wh
                             self.energy = self.energy + (intervall * data["power"] / 3600)
-                            self._logger.info(
+                            self._logger.debug(
                                 "Energy: " + str(self.energy) + " interval: " + str(intervall) + " power: " + str(
                                     data["power"]))
                         self.lastTimeStamp = timestamp
