@@ -97,10 +97,8 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                         self._plugin_manager.send_plugin_message(self._identifier, data)
                 except (requests.exceptions.ConnectionError, ValueError) as e:
                     self._logger.exception(e)
-                    self._logger.info('Connection Error Host: {}, {}'.format(self.ip, e))
             except Exception as exp:
                 self._logger.exception(exp)
-                self._logger.info(exp.message)
         else:
             self._logger.info("Ip is None")
 
@@ -148,7 +146,6 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                     self._logger.exception(e)
                     self._logger.info("Error during powerCycle Relais: " + str(e.message))
             except Exception as exp:
-                self._logger.info("Exception aufgetreten: " + str(exp.message))
                 self._logger.exception(exp)
             nbRetry = nbRetry + 1
 
