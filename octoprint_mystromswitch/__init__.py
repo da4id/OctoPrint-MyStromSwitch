@@ -107,7 +107,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
     def _setRelaisState(self, newState):
         nbRetry = 0
         value = '0'
-        if (newState == True):
+        if newState:
             value = '1'
         while nbRetry < 3:
             try:
@@ -146,9 +146,9 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                             "Could not powerCycle Relais, Http Status Code: {}".format(request.status_code))
                 except requests.exceptions.ConnectionError as e:
                     self._logger.exception(e)
-                    self._logger.info("Error during powerCycle Relais: " + e.message)
+                    self._logger.info("Error during powerCycle Relais: " + str(e.message))
             except Exception as exp:
-                self._logger.info("Exception aufgetreten: " + exp.message)
+                self._logger.info("Exception aufgetreten: " + str(exp.message))
                 self._logger.exception(exp)
             nbRetry = nbRetry + 1
 
@@ -193,7 +193,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         self._logger.info("on_shutdown_event")
         if self.powerOffOnShutdown:
             if self.powerOffDelay <= 0:
-                self._logger.info("Turn on Relais off Shutdown")
+                self._logger.info("Turn off Relais on Shutdown")
                 self._setRelaisState(False)
             else:
                 self._logger.info("Turn off Relais on Shutdown Delayed")
