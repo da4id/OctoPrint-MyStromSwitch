@@ -80,7 +80,6 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                 try:
                     request = requests.get(
                         'http://{}/report'.format(self.ip), timeout=1)
-                    self._logger.info("timer request finish")
                     if request.status_code == 200:
                         timestamp = time.time()
                         data = request.json()
@@ -135,8 +134,6 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                     self._logger.info('http://{}/timer'.format(self.ip))
                     request = requests.post(
                         'http://{}/timer'.format(self.ip), params={'mode': value, 'time': time}, timeout=1)
-                    self._logger.info("a")
-                    self._logger.info("powerCycle Request Status: " + str(request.status_code))
                     if request.status_code == 200:
                         return
                     else:
