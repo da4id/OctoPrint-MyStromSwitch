@@ -107,14 +107,20 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                         self.lastTimeStamp = timestamp
                         data["energy"] = self.energy
                         data["onOffButtonEnabled"] = self.onOffButtonEnabled
+                        data["showShutdownOctopiOption"] = self.showShutdownOctopiOption
+                        data["showPowerOffPrintFinishOption"] = self.showPowerOffPrintFinishOption
                         self._plugin_manager.send_plugin_message(self._identifier, data)
+                        return
                 except (requests.exceptions.ConnectionError, ValueError) as e:
                     self._logger.exception(e)
             except Exception as exp:
                 self._logger.exception(exp)
         else:
             self._logger.info("Ip is None")
-
+        data = {"relay": True, "energy": 0, "onOffButtonEnabled": False, "showShutdownOctopiOption": False,
+                "showPowerOffPrintFinishOption": False}
+        self._plugin_manager.send_plugin_message(self._identifier, data)
+        
     def _setRelaisState(self, newState):
         nbRetry = 0
         value = '0'

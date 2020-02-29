@@ -70,11 +70,15 @@ $(function() {
                 return;
             }
 			self.onOffButtonEnabled(data.onOffButtonEnabled);
+			self.showShutdownOctopiOption(data.showShutdownOctopiOption);
+			self.showPowerOffPrintFinishOption(data.showPowerOffPrintFinishOption);
 			self.mystromswitchEnergyValue.innerHTML = "Energy: "+data.energy.toFixed(1)+"Wh"
 			if(data.relay == false){
 			    self.mystromswitchPowerValue.innerHTML = "Relay is off";
 			} else if (data.power != null) {
                 self.mystromswitchPowerValue.innerHTML = "Power Consumption "+data.power.toFixed(1)+"W";
+            }else{
+                self.mystromswitchPowerValue.innerHTML = "myStrom switch not reachable"
             }
         }
     }
