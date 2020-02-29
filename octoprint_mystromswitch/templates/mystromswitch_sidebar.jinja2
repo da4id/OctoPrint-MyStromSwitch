@@ -3,12 +3,12 @@
     <label class="control-label" id="mystromswitchEnergyValue">Energy 0.0Wh</label>
     <button class="btn btn-primary" data-bind="click: onToggleRelayEvent, visible : onOffButtonEnabled">{{ _('Toggle Relais') }}</button>
     <label class="checkbox">
-		<input type="checkbox" data-bind="enable: loginState.isUser(), checked: onAutomaticShutdownEnabledChanged">
+		<input type="checkbox" data-bind="enable: loginState.isUser(), click: onAutomaticShutdownEnabledChanged, visible :showShutdownOctopiOption">
 		{{ _('Shutdown Octoprint after print finishes') }}
 	</label>
 
 	<label class="checkbox">
-		<input type="checkbox" data-bind="enable: loginState.isUser(), checked: onAutomaticPowerOffEnabledChanged">
+		<input type="checkbox" data-bind="enable: loginState.isUser(), click: onAutomaticPowerOffEnabledChanged", visible: showPowerOffPrintFinishOption>
 		{{ _('Power Off Relais after print finishes') }}
 	</label>
 </div>
