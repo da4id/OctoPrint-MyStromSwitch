@@ -62,8 +62,8 @@ $(function() {
             })
         }
 
-        self.automaticShutdownEnabled.subscribe(self.onAutomaticShutdownEnabledChanged,self);
-        self.automaticPowerOffEnabled.subscribe(self.onAutomaticPowerOffEnabledChanged,self);
+        //self.automaticShutdownEnabled.subscribe(self.onAutomaticShutdownEnabledChanged,self);
+        //self.automaticPowerOffEnabled.subscribe(self.onAutomaticPowerOffEnabledChanged,self);
 
         self.onDataUpdaterPluginMessage = function(plugin, data) {
             if (plugin != "mystromswitch" && plugin != "octoprint_mystromswitch") {
