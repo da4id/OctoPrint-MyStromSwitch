@@ -7,8 +7,8 @@ $(function() {
         self.printer = parameters[2];
 
         self.onOffButtonEnabled = ko.observable();
-        //self.showShutdownOctopiOption = ko.observable();
-        //self.showPowerOffPrintFinishOption = ko.observable();
+        self.showShutdownOctopiOption = ko.observable();
+        self.showPowerOffPrintFinishOption = ko.observable();
         self.mystromswitchPowerValue = document.getElementById("mystromswitchPowerValue")
         self.mystromswitchEnergyValue = document.getElementById("mystromswitchEnergyValue")
 
@@ -62,8 +62,8 @@ $(function() {
             })
         }
 
-        //self.automaticShutdownEnabled.subscribe(self.onAutomaticShutdownEnabledChanged,self);
-        //self.automaticPowerOffEnabled.subscribe(self.onAutomaticPowerOffEnabledChanged,self);
+        self.automaticShutdownEnabled.subscribe(self.onAutomaticShutdownEnabledChanged,self);
+        self.automaticPowerOffEnabled.subscribe(self.onAutomaticPowerOffEnabledChanged,self);
 
         self.onDataUpdaterPluginMessage = function(plugin, data) {
             if (plugin != "mystromswitch" && plugin != "octoprint_mystromswitch") {
@@ -79,6 +79,7 @@ $(function() {
                 self.mystromswitchPowerValue.innerHTML = "Power Consumption "+data.power.toFixed(1)+"W";
             }else{
                 self.mystromswitchPowerValue.innerHTML = "myStrom switch not reachable"
+                self.mystromswitchEnergyValue.innerHTML = "Check url in Plugin Settings"
             }
         }
     }
