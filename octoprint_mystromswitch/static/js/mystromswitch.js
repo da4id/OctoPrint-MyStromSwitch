@@ -30,7 +30,7 @@ $(function() {
 
         //self.onOffButtonEnabled.subscribe(self.onmystromswitchEvent, self);
 
-        self.onAutomaticShutdownEnabledChanged = function(){
+        /*self.onAutomaticShutdownEnabledChanged = function(){
             var cmd = "disableShutdownAfterFinish";
             if (self.automaticShutdownEnabled()) {
                 var cmd = "enableShutdownAfterFinish";
@@ -60,7 +60,7 @@ $(function() {
                 }),
                 contentType: "application/json; charset=UTF-8"
             })
-        }
+        }*/
 
         //self.automaticShutdownEnabled.subscribe(self.onAutomaticShutdownEnabledChanged,self);
         //self.automaticPowerOffEnabled.subscribe(self.onAutomaticPowerOffEnabledChanged,self);

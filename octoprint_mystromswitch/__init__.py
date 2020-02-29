@@ -120,7 +120,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         data = {"relay": True, "energy": 0, "onOffButtonEnabled": False, "showShutdownOctopiOption": False,
                 "showPowerOffPrintFinishOption": False}
         self._plugin_manager.send_plugin_message(self._identifier, data)
-        
+
     def _setRelaisState(self, newState):
         nbRetry = 0
         value = '0'
@@ -207,7 +207,11 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         return dict(
             enableRelais=[],
             disableRelais=[],
-            toggleRelais=[]
+            toggleRelais=[],
+            disableShutdownAfterFinish=[],
+            enableShutdownAfterFinish=[],
+            disablePowerOffAfterFinish=[],
+            enablePowerOffAfterFinish=[]
         )
 
     def on_after_startup(self):
