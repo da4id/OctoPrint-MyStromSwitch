@@ -7,6 +7,8 @@ $(function() {
         self.printer = parameters[2];
 
         self.onOffButtonEnabled = ko.observable();
+        self.showShutdownOctopiOption = ko.observable();
+        self.showPowerOffPrintFinishOption = ko.observable();
         self.mystromswitchPowerValue = document.getElementById("mystromswitchPowerValue")
         self.mystromswitchEnergyValue = document.getElementById("mystromswitchEnergyValue")
 
@@ -22,11 +24,46 @@ $(function() {
             })
         }
 
-        self.onmystromswitchEvent = function() {
+        //self.onmystromswitchEvent = function() {
 
+        //}
+
+        //self.onOffButtonEnabled.subscribe(self.onmystromswitchEvent, self);
+
+        self.onAutomaticShutdownEnabledChanged = function(){
+            var cmd = "disableShutdownAfterFinish";
+            if (self.automaticShutdownEnabled()) {
+                var cmd = "enableShutdownAfterFinish";
+            }
+            $.ajax({
+                url: API_BASEURL + "plugin/mystromswitch",
+                type: "POST",
+                dataType: "json",
+                data: JSON.stringify({
+                    command: cmd
+                }),
+                contentType: "application/json; charset=UTF-8"
+            })
         }
 
-        self.onOffButtonEnabled.subscribe(self.onmystromswitchEvent, self);
+        self.onAutomaticPowerOffEnabledChanged = function(){
+            var cmd = "disablePowerOffAfterFinish";
+            if (self.automaticShutdownEnabled()) {
+                var cmd = "enablePowerOffAfterFinish";
+            }
+            $.ajax({
+                url: API_BASEURL + "plugin/mystromswitch",
+                type: "POST",
+                dataType: "json",
+                data: JSON.stringify({
+                    command: cmd
+                }),
+                contentType: "application/json; charset=UTF-8"
+            })
+        }
+
+        self.automaticShutdownEnabled.subscribe(self.onAutomaticShutdownEnabledChanged,self);
+        self.automaticPowerOffEnabled.subscribe(self.onAutomaticPowerOffEnabledChanged,self);
 
         self.onDataUpdaterPluginMessage = function(plugin, data) {
             if (plugin != "mystromswitch" && plugin != "octoprint_mystromswitch") {

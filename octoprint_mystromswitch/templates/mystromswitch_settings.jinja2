@@ -61,4 +61,35 @@
             <span class="help-block"><small>{{ _('Delay in seconds after octoprint is shutted down to switch off relays. This settings is recommended to make sure that Raspberry Pi is completely shutted down when you switch power off. Switching off when your Raspberry Pi is running could lead to unrepairable damage to your SD Card!') }}</small></span>
         </div>
     </div>
+
+    <h4>Automatic Power Off Features</h4>
+    <div class="control-group">
+	    <div class="controls">
+			<label class="checkbox">
+		    	<input type="checkbox" data-bind="checked: settings.plugins.mystromswitch.showShutdownOctopiOption">Show option to automatic shutdown Octoprint after Print is finished
+			</label>
+		    <span class="help-block"><small>{{ _('This setting shows the option to shut Octoprint down and switch your mySwitch off after your Print is finished.') }}</small></span>
+		</div>
+	</div>
+
+	<div class="control-group">
+	    <div class="controls">
+			<label class="checkbox">
+		    	<input type="checkbox" data-bind="checked: settings.plugins.mystromswitch.showPowerOffPrintFinishOption">Show option to turn off Relais after Print is finished
+			</label>
+		    <span class="help-block"><small>{{ _('This setting shows the option to switch your mySwitch off after your Print is finished') }}</small></span>
+		</div>
+	</div>
+
+	<div class="control-group">
+        <label class="control-label">{{ _('Delay after print is finished') }}</label>
+        <div class="controls">
+            <div class="input-append">
+                <input type="number" class="input-block-level" data-bind="value: settings.plugins.mystromswitch.shutdownDelay">
+                <span class="add-on">seconds</span>
+            </div>
+            <span class="help-block"><small>{{ _('Delay in seconds after after print is finished') }}</small></span>
+        </div>
+    </div>
+
 </form>
