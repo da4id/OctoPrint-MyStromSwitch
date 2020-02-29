@@ -70,8 +70,8 @@ $(function() {
                 return;
             }
 			self.onOffButtonEnabled(data.onOffButtonEnabled);
-			//self.showShutdownOctopiOption(data.showShutdownOctopiOption);
-			//self.showPowerOffPrintFinishOption(data.showPowerOffPrintFinishOption);
+			self.showShutdownOctopiOption(data.showShutdownOctopiOption);
+			self.showPowerOffPrintFinishOption(data.showPowerOffPrintFinishOption);
 			self.mystromswitchEnergyValue.innerHTML = "Energy: "+data.energy.toFixed(1)+"Wh"
 			if(data.relay == false){
 			    self.mystromswitchPowerValue.innerHTML = "Relay is off";

@@ -4,7 +4,6 @@
     <list default="true" id="7e2e0eec-b22e-4d48-8f24-196d1ed9b51a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/octoprint_mystromswitch/static/js/mystromswitch.js" beforeDir="false" afterPath="$PROJECT_DIR$/octoprint_mystromswitch/static/js/mystromswitch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/octoprint_mystromswitch/templates/mystromswitch_sidebar.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/octoprint_mystromswitch/templates/mystromswitch_sidebar.jinja2" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,16 +39,16 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="jinja2" value="669" />
-          <entry key="js" value="260" />
+          <entry key="jinja2" value="696" />
+          <entry key="js" value="262" />
           <entry key="py" value="467" />
           <entry key="txt" value="107" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="260" />
-          <entry key="PLAIN_TEXT" value="776" />
+          <entry key="JavaScript" value="262" />
+          <entry key="PLAIN_TEXT" value="803" />
           <entry key="Python" value="467" />
         </counts>
       </usages-collector>
@@ -60,8 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/octoprint_mystromswitch/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="25" column="37" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
+            <state relative-caret-position="321">
+              <caret line="192" column="52" lean-forward="true" selection-start-line="192" selection-start-column="52" selection-end-line="192" selection-end-column="52" />
               <folding>
                 <element signature="e#15#53#0" expanded="true" />
               </folding>
@@ -69,20 +68,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/octoprint_mystromswitch/static/js/mystromswitch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="48" column="46" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="46" />
+            <state relative-caret-position="272">
+              <caret line="73" column="12" selection-start-line="73" selection-start-column="12" selection-end-line="73" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/octoprint_mystromswitch/templates/mystromswitch_sidebar.jinja2">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="10" column="113" selection-start-line="10" selection-start-column="113" selection-end-line="10" selection-end-column="113" />
+              <caret line="10" column="152" selection-start-line="10" selection-start-column="152" selection-end-line="10" selection-end-column="152" />
             </state>
           </provider>
         </entry>
@@ -95,6 +94,7 @@
       <find>onmystromswitchEvent</find>
       <find>showShutdownOctopiOption</find>
       <find>onOffButtonEnabled</find>
+      <find>onToggleRelayEvent</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -110,8 +110,8 @@
       <list>
         <option value="$PROJECT_DIR$/octoprint_mystromswitch/__init__.py" />
         <option value="$PROJECT_DIR$/octoprint_mystromswitch/templates/mystromswitch_settings.jinja2" />
-        <option value="$PROJECT_DIR$/octoprint_mystromswitch/static/js/mystromswitch.js" />
         <option value="$PROJECT_DIR$/octoprint_mystromswitch/templates/mystromswitch_sidebar.jinja2" />
+        <option value="$PROJECT_DIR$/octoprint_mystromswitch/static/js/mystromswitch.js" />
       </list>
     </option>
   </component>
@@ -197,20 +197,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574193087583</updated>
-    </task>
-    <task id="LOCAL-00018" summary="#6 UI Updates senden und anzeigen">
-      <created>1574283002922</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1574283002922</updated>
-    </task>
-    <task id="LOCAL-00019" summary="#6 UI Updates senden und anzeigen">
-      <created>1574283107060</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1574283107060</updated>
     </task>
     <task id="LOCAL-00020" summary="#6 UI Updates senden und anzeigen">
       <created>1574283263948</created>
@@ -541,7 +527,21 @@
       <option name="project" value="LOCAL" />
       <updated>1582991720560</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="#21 Add PowerOFF when print is finished">
+      <created>1582992279872</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1582992279872</updated>
+    </task>
+    <task id="LOCAL-00068" summary="#21 Add PowerOFF when print is finished">
+      <created>1582992989361</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1582992989361</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -650,25 +650,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/octoprint_mystromswitch/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="25" column="37" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
+        <state relative-caret-position="321">
+          <caret line="192" column="52" lean-forward="true" selection-start-line="192" selection-start-column="52" selection-end-line="192" selection-end-column="52" />
           <folding>
             <element signature="e#15#53#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/octoprint_mystromswitch/static/js/mystromswitch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="48" column="46" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/octoprint_mystromswitch/templates/mystromswitch_sidebar.jinja2">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="10" column="113" selection-start-line="10" selection-start-column="113" selection-end-line="10" selection-end-column="113" />
+          <caret line="10" column="152" selection-start-line="10" selection-start-column="152" selection-end-line="10" selection-end-column="152" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/octoprint_mystromswitch/static/js/mystromswitch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="73" column="12" selection-start-line="73" selection-start-column="12" selection-end-line="73" selection-end-column="12" />
         </state>
       </provider>
     </entry>
