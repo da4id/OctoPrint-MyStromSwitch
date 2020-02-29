@@ -7,8 +7,8 @@ $(function() {
         self.printer = parameters[2];
 
         self.onOffButtonEnabled = ko.observable();
-        self.showShutdownOctopiOption = ko.observable();
-        self.showPowerOffPrintFinishOption = ko.observable();
+        //self.showShutdownOctopiOption = ko.observable();
+        //self.showPowerOffPrintFinishOption = ko.observable();
         self.mystromswitchPowerValue = document.getElementById("mystromswitchPowerValue")
         self.mystromswitchEnergyValue = document.getElementById("mystromswitchEnergyValue")
 
@@ -30,7 +30,7 @@ $(function() {
 
         //self.onOffButtonEnabled.subscribe(self.onmystromswitchEvent, self);
 
-        /*self.onAutomaticShutdownEnabledChanged = function(){
+        self.onAutomaticShutdownEnabledChanged = function(){
             var cmd = "disableShutdownAfterFinish";
             if (self.automaticShutdownEnabled()) {
                 var cmd = "enableShutdownAfterFinish";
@@ -60,7 +60,7 @@ $(function() {
                 }),
                 contentType: "application/json; charset=UTF-8"
             })
-        }*/
+        }
 
         //self.automaticShutdownEnabled.subscribe(self.onAutomaticShutdownEnabledChanged,self);
         //self.automaticPowerOffEnabled.subscribe(self.onAutomaticPowerOffEnabledChanged,self);
@@ -70,8 +70,8 @@ $(function() {
                 return;
             }
 			self.onOffButtonEnabled(data.onOffButtonEnabled);
-			self.showShutdownOctopiOption(data.showShutdownOctopiOption);
-			self.showPowerOffPrintFinishOption(data.showPowerOffPrintFinishOption);
+			//self.showShutdownOctopiOption(data.showShutdownOctopiOption);
+			//self.showPowerOffPrintFinishOption(data.showPowerOffPrintFinishOption);
 			self.mystromswitchEnergyValue.innerHTML = "Energy: "+data.energy.toFixed(1)+"Wh"
 			if(data.relay == false){
 			    self.mystromswitchPowerValue.innerHTML = "Relay is off";
