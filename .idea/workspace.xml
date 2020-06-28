@@ -3,99 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="7e2e0eec-b22e-4d48-8f24-196d1ed9b51a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/octoprint_mystromswitch/templates/mystromswitch_sidebar.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/octoprint_mystromswitch/templates/mystromswitch_sidebar.jinja2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/octoprint_mystromswitch/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/octoprint_mystromswitch/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/octoprint_mystromswitch/static/js/mystromswitch.js" beforeDir="false" afterPath="$PROJECT_DIR$/octoprint_mystromswitch/static/js/mystromswitch.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="799293204">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.0" value="2" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="3" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="css" value="1" />
-          <entry key="jinja2" value="2" />
-          <entry key="js" value="1" />
-          <entry key="py" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="CSS" value="1" />
-          <entry key="JavaScript" value="1" />
-          <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="jinja2" value="702" />
-          <entry key="js" value="262" />
-          <entry key="py" value="467" />
-          <entry key="txt" value="107" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JavaScript" value="262" />
-          <entry key="PLAIN_TEXT" value="809" />
-          <entry key="Python" value="467" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/octoprint_mystromswitch/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2023">
-              <caret line="119" column="63" selection-start-line="119" selection-start-column="45" selection-end-line="119" selection-end-column="63" />
-              <folding>
-                <element signature="e#15#53#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/octoprint_mystromswitch/static/js/mystromswitch.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="72" column="30" lean-forward="true" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/octoprint_mystromswitch/templates/mystromswitch_sidebar.jinja2">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="77" selection-start-line="10" selection-start-column="77" selection-end-line="10" selection-end-column="77" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>onOffBu</find>
-      <find>onmystromswitchEvent</find>
-      <find>showShutdownOctopiOption</find>
-      <find>onToggleRelayEvent</find>
-      <find>onOffButtonEnabled</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -105,72 +20,8 @@
       </map>
     </option>
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/octoprint_mystromswitch/__init__.py" />
-        <option value="$PROJECT_DIR$/octoprint_mystromswitch/templates/mystromswitch_settings.jinja2" />
-        <option value="$PROJECT_DIR$/octoprint_mystromswitch/static/js/mystromswitch.js" />
-        <option value="$PROJECT_DIR$/octoprint_mystromswitch/templates/mystromswitch_sidebar.jinja2" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="2587" />
-    <option name="height" value="1469" />
-  </component>
   <component name="ProjectId" id="1TqgYXT1S9U5eM0eUvs1YarA1ll" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="OctoPrint-MyStromSwitch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OctoPrint-MyStromSwitch" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OctoPrint-MyStromSwitch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OctoPrint-MyStromSwitch" type="462c0819:PsiDirectoryNode" />
-              <item name="octoprint_mystromswitch" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OctoPrint-MyStromSwitch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OctoPrint-MyStromSwitch" type="462c0819:PsiDirectoryNode" />
-              <item name="octoprint_mystromswitch" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OctoPrint-MyStromSwitch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OctoPrint-MyStromSwitch" type="462c0819:PsiDirectoryNode" />
-              <item name="octoprint_mystromswitch" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OctoPrint-MyStromSwitch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OctoPrint-MyStromSwitch" type="462c0819:PsiDirectoryNode" />
-              <item name="octoprint_mystromswitch" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OctoPrint-MyStromSwitch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OctoPrint-MyStromSwitch" type="462c0819:PsiDirectoryNode" />
-              <item name="octoprint_mystromswitch" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
-  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../LEDStrip/RaspberryPi/Python" />
@@ -544,29 +395,6 @@
     <option name="localTasksCounter" value="70" />
     <servers />
   </component>
-  <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="2208" height="1208" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32917705" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" visible="true" weight="0.32992566" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
-  </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
   </component>
@@ -586,21 +414,12 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="#5 Rest Api integration&#10;&#10;- Bugfix plugin_requires" />
@@ -629,48 +448,5 @@
     <MESSAGE value="#22 Button taucht nicht auf&#10;&#10;Fehler anzeigen wenn Verbindung zu switch nicht klappt" />
     <MESSAGE value="#21 Add PowerOFF when print is finished" />
     <option name="LAST_COMMIT_MESSAGE" value="#21 Add PowerOFF when print is finished" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/octoprint_mystromswitch/templates/mystromswitch_settings.jinja2">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="89" selection-start-line="3" selection-start-column="89" selection-end-line="3" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/octoprint_mystromswitch/static/css/mystromswitch.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-93" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1054" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/octoprint_mystromswitch/static/js/mystromswitch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="72" column="30" lean-forward="true" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/octoprint_mystromswitch/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2023">
-          <caret line="119" column="63" selection-start-line="119" selection-start-column="45" selection-end-line="119" selection-end-column="63" />
-          <folding>
-            <element signature="e#15#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/octoprint_mystromswitch/templates/mystromswitch_sidebar.jinja2">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="77" selection-start-line="10" selection-start-column="77" selection-end-line="10" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>

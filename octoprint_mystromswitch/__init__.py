@@ -202,6 +202,12 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         elif command == "disablePowerOffAfterFinish":
             self._logger.info("disablePowerOffAfterFinish")
             self.powerOffAfterPrintFinished = False
+        self._plugin_manager.send_plugin_message(self._identifier,
+                                                 dict(showShutdownOctopiOption=self.shutdownAfterPrintFinished,
+                                                      type="timeout", timeout_value=self._timeout_value))
+        self._plugin_manager.send_plugin_message(self._identifier,
+                                                 dict(showPowerOffPrintFinishOption=self.powerOffAfterPrintFinished,
+                                                      type="timeout", timeout_value=self._timeout_value))
 
     def get_api_commands(self):
         return dict(
@@ -269,6 +275,15 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         self.initialize()
 
     def on_event(self, event, payload):
+
+        if event == Events.CLIENT_OPENED:
+            self._plugin_manager.send_plugin_message(self._identifier,
+                                                     dict(showShutdownOctopiOption=self.shutdownAfterPrintFinished,
+                                                          type="timeout", timeout_value=self._timeout_value))
+            self._plugin_manager.send_plugin_message(self._identifier,
+                                                     dict(showPowerOffPrintFinishOption=self.powerOffAfterPrintFinished,
+                                                          type="timeout", timeout_value=self._timeout_value))
+            return
 
         if not self.shutdownAfterPrintFinished and not self.powerOffAfterPrintFinished:
             return
