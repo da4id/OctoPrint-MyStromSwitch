@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7e2e0eec-b22e-4d48-8f24-196d1ed9b51a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/octoprint_mystromswitch/templates/mystromswitch_sidebar.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/octoprint_mystromswitch/templates/mystromswitch_sidebar.jinja2" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,12 +12,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1TqgYXT1S9U5eM0eUvs1YarA1ll" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -47,174 +47,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574193087583</updated>
-    </task>
-    <task id="LOCAL-00012" summary="#6 UI Updates senden und anzeigen">
-      <created>1574281255732</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1574281255732</updated>
-    </task>
-    <task id="LOCAL-00013" summary="#6 UI Updates senden und anzeigen">
-      <created>1574281522356</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1574281522356</updated>
-    </task>
-    <task id="LOCAL-00014" summary="#6 UI Updates senden und anzeigen">
-      <created>1574281964923</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1574281964923</updated>
-    </task>
-    <task id="LOCAL-00015" summary="#6 UI Updates senden und anzeigen">
-      <created>1574282183896</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1574282183896</updated>
-    </task>
-    <task id="LOCAL-00016" summary="#6 UI Updates senden und anzeigen">
-      <created>1574282504648</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1574282504648</updated>
-    </task>
-    <task id="LOCAL-00017" summary="#6 UI Updates senden und anzeigen">
-      <created>1574282834574</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1574282834574</updated>
-    </task>
-    <task id="LOCAL-00018" summary="#6 UI Updates senden und anzeigen">
-      <created>1574283002922</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1574283002922</updated>
-    </task>
-    <task id="LOCAL-00019" summary="#6 UI Updates senden und anzeigen">
-      <created>1574283107060</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1574283107060</updated>
-    </task>
-    <task id="LOCAL-00020" summary="#6 UI Updates senden und anzeigen">
-      <created>1574283263948</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1574283263948</updated>
-    </task>
-    <task id="LOCAL-00021" summary="#6 UI Updates senden und anzeigen">
-      <created>1574283721587</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1574283721587</updated>
-    </task>
-    <task id="LOCAL-00022" summary="#6 UI Updates senden und anzeigen">
-      <created>1574284067356</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1574284067356</updated>
-    </task>
-    <task id="LOCAL-00023" summary="#6 UI Updates senden und anzeigen">
-      <created>1574284365024</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1574284365024</updated>
-    </task>
-    <task id="LOCAL-00024" summary="#6 UI Updates senden und anzeigen">
-      <created>1574284478325</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1574284478325</updated>
-    </task>
-    <task id="LOCAL-00025" summary="#6 UI Updates senden und anzeigen&#10;&#10;logs entfernt">
-      <created>1574284617102</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1574284617102</updated>
-    </task>
-    <task id="LOCAL-00026" summary="#8 Relais ein / ausschalten von Ocotprint aus&#10;&#10;- Toggle Button anzeigen und Events eingebaut&#10;- Api funktionen für Relais ein / aus und toggle implementiert">
-      <created>1574604851601</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1574604851601</updated>
-    </task>
-    <task id="LOCAL-00027" summary="#8 Relais ein / ausschalten von Ocotprint aus&#10;&#10;- Button Style auf default geändert&#10;- get_api_commands implementiert">
-      <created>1574605785309</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1574605785309</updated>
-    </task>
-    <task id="LOCAL-00028" summary="#8 Relais ein / ausschalten von Ocotprint aus&#10;&#10;- url korrigiert">
-      <created>1574606064523</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1574606064523</updated>
-    </task>
-    <task id="LOCAL-00029" summary="#8 Relais ein / ausschalten von Ocotprint aus">
-      <created>1574606292074</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1574606292074</updated>
-    </task>
-    <task id="LOCAL-00030" summary="#8 Relais ein / ausschalten von Ocotprint aus&#10;&#10;- url korrigiert">
-      <created>1574606712347</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1574606712347</updated>
-    </task>
-    <task id="LOCAL-00031" summary="#8 Relais ein / ausschalten von Ocotprint aus&#10;&#10;- Toggle Button enable / disable in Einstellunge&#10;- Databinding von Button">
-      <created>1574607577396</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1574607577396</updated>
-    </task>
-    <task id="LOCAL-00032" summary="#8 Relais ein / ausschalten von Ocotprint aus">
-      <created>1574607723126</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1574607723126</updated>
-    </task>
-    <task id="LOCAL-00033" summary="#8 Relais ein / ausschalten von Ocotprint aus">
-      <created>1574608168544</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1574608168544</updated>
-    </task>
-    <task id="LOCAL-00034" summary="#8 Relais ein / ausschalten von Ocotprint aus">
-      <created>1574608700412</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1574608700412</updated>
-    </task>
-    <task id="LOCAL-00035" summary="#8 Relais ein / ausschalten von Ocotprint aus">
-      <created>1574609194050</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1574609194050</updated>
     </task>
     <task id="LOCAL-00036" summary="#8 Relais ein / ausschalten von Ocotprint aus">
       <created>1574609901438</created>
@@ -391,7 +223,175 @@
       <option name="project" value="LOCAL" />
       <updated>1579192359403</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="#21 Add PowerOFF when print is finished&#10;&#10;neue Einstellmöglichkeiten anzeigen">
+      <created>1582988883875</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1582988883875</updated>
+    </task>
+    <task id="LOCAL-00062" summary="#22 Button taucht nicht auf&#10;&#10;Fehler anzeigen wenn Verbindung zu switch nicht klappt">
+      <created>1582990110412</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1582990110412</updated>
+    </task>
+    <task id="LOCAL-00063" summary="#21 Add PowerOFF when print is finished">
+      <created>1582990799626</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1582990799626</updated>
+    </task>
+    <task id="LOCAL-00064" summary="#21 Add PowerOFF when print is finished">
+      <created>1582991033421</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1582991033421</updated>
+    </task>
+    <task id="LOCAL-00065" summary="#21 Add PowerOFF when print is finished">
+      <created>1582991352868</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1582991352868</updated>
+    </task>
+    <task id="LOCAL-00066" summary="#21 Add PowerOFF when print is finished">
+      <created>1582991720560</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1582991720560</updated>
+    </task>
+    <task id="LOCAL-00067" summary="#21 Add PowerOFF when print is finished">
+      <created>1582992279872</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1582992279872</updated>
+    </task>
+    <task id="LOCAL-00068" summary="#21 Add PowerOFF when print is finished">
+      <created>1582992989361</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1582992989361</updated>
+    </task>
+    <task id="LOCAL-00069" summary="#21 Add PowerOFF when print is finished">
+      <created>1582993317859</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1582993317859</updated>
+    </task>
+    <task id="LOCAL-00070" summary="#21 Add PowerOFF when print is finished">
+      <created>1593346830444</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1593346830445</updated>
+    </task>
+    <task id="LOCAL-00071" summary="#21 Add PowerOFF when print is finished">
+      <created>1593346998123</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1593346998123</updated>
+    </task>
+    <task id="LOCAL-00072" summary="#21 Add PowerOFF when print is finished">
+      <created>1593347175159</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1593347175159</updated>
+    </task>
+    <task id="LOCAL-00073" summary="#21 Add PowerOFF when print is finished">
+      <created>1593347774339</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1593347774339</updated>
+    </task>
+    <task id="LOCAL-00074" summary="#21 Add PowerOFF when print is finished">
+      <created>1593347857755</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1593347857755</updated>
+    </task>
+    <task id="LOCAL-00075" summary="#21 Add PowerOFF when print is finished">
+      <created>1593347943336</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1593347943336</updated>
+    </task>
+    <task id="LOCAL-00076" summary="#21 Add PowerOFF when print is finished">
+      <created>1593348030528</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1593348030528</updated>
+    </task>
+    <task id="LOCAL-00077" summary="#21 Add PowerOFF when print is finished">
+      <created>1593348512259</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1593348512259</updated>
+    </task>
+    <task id="LOCAL-00078" summary="#21 Add PowerOFF when print is finished">
+      <created>1593348977898</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1593348977898</updated>
+    </task>
+    <task id="LOCAL-00079" summary="#21 Add PowerOFF when print is finished">
+      <created>1593350619006</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1593350619006</updated>
+    </task>
+    <task id="LOCAL-00080" summary="#21 Add PowerOFF when print is finished">
+      <created>1593352569980</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1593352569980</updated>
+    </task>
+    <task id="LOCAL-00081" summary="#21 Add PowerOFF when print is finished">
+      <created>1593352709926</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1593352709926</updated>
+    </task>
+    <task id="LOCAL-00082" summary="#21 Add PowerOFF when print is finished">
+      <created>1593353565224</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1593353565224</updated>
+    </task>
+    <task id="LOCAL-00083" summary="#21 Add PowerOFF when print is finished">
+      <created>1593354627917</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1593354627917</updated>
+    </task>
+    <task id="LOCAL-00084" summary="#21 Add PowerOFF when print is finished">
+      <created>1593354891881</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1593354891881</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -421,8 +421,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="#2 Einstellungen für IP Adresse von Switch&#10;#3 Einstellung für Abfrageintervall" />
-    <MESSAGE value="#5 Rest Api integration" />
     <MESSAGE value="#5 Rest Api integration&#10;&#10;- Bugfix plugin_requires" />
     <MESSAGE value="#5 Rest Api integration&#10;&#10;- Nullpointer fix" />
     <MESSAGE value="#6 UI Updates senden und anzeigen&#10;&#10;- unnötigen Code entfernen, erster Versuch" />
@@ -445,6 +443,9 @@
     <MESSAGE value="#16 Codereview Octoprint Plugin Repo" />
     <MESSAGE value="#17 Logging zur Fehleranalyse eingebaut" />
     <MESSAGE value="#17 Logs aufgeräumt" />
-    <option name="LAST_COMMIT_MESSAGE" value="#17 Logs aufgeräumt" />
+    <MESSAGE value="#21 Add PowerOFF when print is finished&#10;&#10;neue Einstellmöglichkeiten anzeigen" />
+    <MESSAGE value="#22 Button taucht nicht auf&#10;&#10;Fehler anzeigen wenn Verbindung zu switch nicht klappt" />
+    <MESSAGE value="#21 Add PowerOFF when print is finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="#21 Add PowerOFF when print is finished" />
   </component>
 </project>
