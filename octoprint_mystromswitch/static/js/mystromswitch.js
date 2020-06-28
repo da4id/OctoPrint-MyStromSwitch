@@ -9,6 +9,8 @@ $(function() {
         self.onOffButtonEnabled = ko.observable();
         self.showShutdownOctopiOption = ko.observable();
         self.showPowerOffPrintFinishOption = ko.observable();
+        self.automaticPowerOffEnabled = ko.observable();
+        self.automaticShutdownEnabled = ko.observable();
         self.mystromswitchPowerValue = document.getElementById("mystromswitchPowerValue")
         self.mystromswitchEnergyValue = document.getElementById("mystromswitchEnergyValue")
 
@@ -81,6 +83,8 @@ $(function() {
                 self.mystromswitchPowerValue.innerHTML = "myStrom switch not reachable"
                 self.mystromswitchEnergyValue.innerHTML = "Check url in Plugin Settings"
             }
+            self.automaticShutdownEnabled = data.automaticShutdownEnabled;
+            self.automaticPowerOffEnabled = data.automaticPowerOffEnabled;
         }
     }
 
