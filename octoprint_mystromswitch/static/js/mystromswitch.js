@@ -50,7 +50,7 @@ $(function() {
 
         self.onAutomaticPowerOffEnabledChanged = function(){
             var cmd = "disablePowerOffAfterFinish";
-            if (self.automaticShutdownEnabled()) {
+            if (self.automaticPowerOffEnabled()) {
                 var cmd = "enablePowerOffAfterFinish";
             }
             $.ajax({
