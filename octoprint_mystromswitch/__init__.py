@@ -276,10 +276,10 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
     def on_event(self, event, payload):
 
         if event == Events.CLIENT_OPENED:
-            self._plugin_manager.send_plugin_message(self._identifier,
-                                                     dict(automaticShutdownEnabled=self.shutdownAfterPrintFinished))
-            self._plugin_manager.send_plugin_message(self._identifier,
-                                                     dict(automaticPowerOffEnabled=self.powerOffAfterPrintFinished))
+            #self._plugin_manager.send_plugin_message(self._identifier,
+            #                                         dict(automaticShutdownEnabled=self.shutdownAfterPrintFinished))
+            #self._plugin_manager.send_plugin_message(self._identifier,
+            #                                         dict(automaticPowerOffEnabled=self.powerOffAfterPrintFinished))
             return
 
         if not self.shutdownAfterPrintFinished and not self.powerOffAfterPrintFinished:
