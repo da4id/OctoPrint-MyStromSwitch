@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e2e0eec-b22e-4d48-8f24-196d1ed9b51a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/octoprint_mystromswitch/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/octoprint_mystromswitch/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/octoprint_mystromswitch/static/js/mystromswitch.js" beforeDir="false" afterPath="$PROJECT_DIR$/octoprint_mystromswitch/static/js/mystromswitch.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,13 +46,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574193087583</updated>
-    </task>
-    <task id="LOCAL-00021" summary="#6 UI Updates senden und anzeigen">
-      <created>1574283721587</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1574283721587</updated>
     </task>
     <task id="LOCAL-00022" summary="#6 UI Updates senden und anzeigen">
       <created>1574284067356</created>
@@ -392,7 +383,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582993317859</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="#21 Add PowerOFF when print is finished">
+      <created>1593346830444</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1593346830445</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="UnknownFeatures">

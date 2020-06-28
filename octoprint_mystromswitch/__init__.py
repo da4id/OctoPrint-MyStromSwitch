@@ -6,6 +6,7 @@ import requests
 import ssl
 import time
 from octoprint.util import RepeatedTimer
+from octoprint.events import eventManager, Events
 
 
 class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
