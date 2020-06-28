@@ -4,7 +4,6 @@
     <list default="true" id="7e2e0eec-b22e-4d48-8f24-196d1ed9b51a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/octoprint_mystromswitch/static/js/mystromswitch.js" beforeDir="false" afterPath="$PROJECT_DIR$/octoprint_mystromswitch/static/js/mystromswitch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/octoprint_mystromswitch/templates/mystromswitch_sidebar.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/octoprint_mystromswitch/templates/mystromswitch_sidebar.jinja2" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,13 +47,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574193087583</updated>
-    </task>
-    <task id="LOCAL-00029" summary="#8 Relais ein / ausschalten von Ocotprint aus">
-      <created>1574606292074</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1574606292074</updated>
     </task>
     <task id="LOCAL-00030" summary="#8 Relais ein / ausschalten von Ocotprint aus&#10;&#10;- url korrigiert">
       <created>1574606712347</created>
@@ -392,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593348512259</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="#21 Add PowerOFF when print is finished">
+      <created>1593348977898</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1593348977898</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="UnknownFeatures">
