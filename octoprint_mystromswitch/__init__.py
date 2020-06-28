@@ -94,6 +94,21 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         self._abort_timer = RepeatedTimer(1, self._shutdown_timer_task)
         self._abort_timer.start()
 
+    def _wait_for_timelapse_start(self):
+        if self._wait_for_timelapse_timer is not None:
+            return
+
+        self._wait_for_timelapse_timer = RepeatedTimer(5, self._wait_for_timelapse)
+        self._wait_for_timelapse_timer.start()
+
+    def _wait_for_timelapse(self):
+        c = len(octoprint.timelapse.get_unrendered_timelapses())
+
+        if c > 0:
+            self._logger.info("Waiting for %s timelapse(s) to finish rendering before starting shutdown timer..." % c)
+        else:
+            self._shutdown_timer_start()
+
     def _shutdown_timer_task(self):
         if self._timeout_value is None:
             return

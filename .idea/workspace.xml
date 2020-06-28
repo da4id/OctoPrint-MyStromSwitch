@@ -4,7 +4,6 @@
     <list default="true" id="7e2e0eec-b22e-4d48-8f24-196d1ed9b51a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/octoprint_mystromswitch/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/octoprint_mystromswitch/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/octoprint_mystromswitch/templates/mystromswitch_settings.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/octoprint_mystromswitch/templates/mystromswitch_settings.jinja2" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,13 +47,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574193087583</updated>
-    </task>
-    <task id="LOCAL-00031" summary="#8 Relais ein / ausschalten von Ocotprint aus&#10;&#10;- Toggle Button enable / disable in Einstellunge&#10;- Databinding von Button">
-      <created>1574607577396</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1574607577396</updated>
     </task>
     <task id="LOCAL-00032" summary="#8 Relais ein / ausschalten von Ocotprint aus">
       <created>1574607723126</created>
@@ -392,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593350619006</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="#21 Add PowerOFF when print is finished">
+      <created>1593352569980</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1593352569980</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="UnknownFeatures">
