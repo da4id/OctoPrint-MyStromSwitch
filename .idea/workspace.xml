@@ -47,13 +47,6 @@
       <option name="presentableId" value="Default" />
       <updated>1574193087583</updated>
     </task>
-    <task id="LOCAL-00022" summary="#6 UI Updates senden und anzeigen">
-      <created>1574284067356</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1574284067356</updated>
-    </task>
     <task id="LOCAL-00023" summary="#6 UI Updates senden und anzeigen">
       <created>1574284365024</created>
       <option name="number" value="00023" />
@@ -390,7 +383,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593346830445</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="#21 Add PowerOFF when print is finished">
+      <created>1593346998123</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1593346998123</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="UnknownFeatures">
