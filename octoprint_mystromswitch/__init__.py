@@ -30,7 +30,9 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         self.shutdownAfterPrintFinished = False
         self.powerOffAfterPrintFinished = False
 
-        self._timer = None
+        self._status_timer = None
+        self._abort_timer = None
+        self._wait_for_timelapse_timer = None
 
         self.energy = 0
         self.lastTimeStamp = 0
@@ -79,15 +81,57 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                      icon="power-off"),
                 dict(type="settings", custom_bindings=False)]
 
+    def _shutdown_timer_start(self):
+        if self._abort_timer is not None:
+            return
+
+        if self._wait_for_timelapse_timer is not None:
+            self._wait_for_timelapse_timer.cancel()
+
+        self._logger.info("Starting abort shutdown timer.")
+
+        self._timeout_value = self.shutdownDelay
+        self._abort_timer = RepeatedTimer(1, self._shutdown_timer_task)
+        self._abort_timer.start()
+
+    def _shutdown_timer_task(self):
+        if self._timeout_value is None:
+            return
+
+        self._timeout_value -= 1
+        if self._timeout_value <= 0:
+            if self._wait_for_timelapse_timer is not None:
+                self._wait_for_timelapse_timer.cancel()
+                self._wait_for_timelapse_timer = None
+            if self._abort_timer is not None:
+                self._abort_timer.cancel()
+                self._abort_timer = None
+            if self.shutdownAfterPrintFinished:
+                self._shutdown_system()
+            elif self.powerOffAfterPrintFinished:
+                self._setRelaisState(False)
+
     def _status_timer_start(self):
-        if self._timer is not None:
-            self._timer.cancel()
+        if self._status_timer is not None:
+            self._status_timer.cancel()
             self._logger.info("Canceling Timer")
 
         if self.intervall >= 1 and self.ip is not None:
             self._logger.info("Starting timer")
-            self._timer = RepeatedTimer(self.intervall, self._status_timer_task)
-            self._timer.start()
+            self._status_timer = RepeatedTimer(self.intervall, self._status_timer_task)
+            self._status_timer.start()
+
+    def _shutdown_system(self):
+        self._powerCycleRelais(False, self.powerOffDelay)
+        if self.shutdownAfterPrintFinished:
+            shutdown_command = self._settings.global_get(["server", "commands", "systemShutdownCommand"])
+            self._logger.info("Shutting down system with command: {command}".format(command=shutdown_command))
+            try:
+                import sarge
+                p = sarge.run(shutdown_command, async=True)
+            except Exception as e:
+                self._logger.exception("Error when shutting down: {error}".format(error=e))
+                return
 
     def _status_timer_task(self):
         if self.ip is not None:
@@ -199,14 +243,13 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             self.shutdownAfterPrintFinished = True
         elif command == "disableShutdownAfterFinish":
             self._logger.info("disableShutdownAfterFinish")
-            self.disableShutdownAfterFinish = False
+            self.shutdownAfterPrintFinished = False
         elif command == "enablePowerOffAfterFinish":
             self._logger.info("enablePowerOffAfterFinish")
             self.powerOffAfterPrintFinished = True
         elif command == "disablePowerOffAfterFinish":
             self._logger.info("disablePowerOffAfterFinish")
             self.powerOffAfterPrintFinished = False
-
 
     def get_api_commands(self):
         return dict(
@@ -275,13 +318,6 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
 
     def on_event(self, event, payload):
 
-        if event == Events.CLIENT_OPENED:
-            #self._plugin_manager.send_plugin_message(self._identifier,
-            #                                         dict(automaticShutdownEnabled=self.shutdownAfterPrintFinished))
-            #self._plugin_manager.send_plugin_message(self._identifier,
-            #                                         dict(automaticPowerOffEnabled=self.powerOffAfterPrintFinished))
-            return
-
         if not self.shutdownAfterPrintFinished and not self.powerOffAfterPrintFinished:
             return
 
@@ -302,7 +338,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             if (timelapse_type is not None and timelapse_type != "off"):
                 self._wait_for_timelapse_start()
             else:
-                self._timer_start()
+                self._shutdown_timer_start()
             return
 
     def get_update_information(self):
