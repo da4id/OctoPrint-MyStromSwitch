@@ -19,6 +19,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
 
     def __init__(self):
         self.ip = None
+        self.token = ""
         self.intervall = 1
         self.onOffButtonEnabled = False
         self.powerOnOnStart = False
@@ -49,6 +50,9 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
     def initialize(self):
         self.ip = self._settings.get(["ip"])
         self._logger.debug("ip: %s" % self.ip)
+
+        self.token = self._settings.get(["token"])
+        self._logger.debug("token: %s" % self.token)
 
         self.intervall = self._settings.get_int(["intervall"])
         self._logger.debug("intervall: %s" % self.intervall)
@@ -345,13 +349,16 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                 self.lastShutdown = False
                 self.lastPowerOff = False
                 self.rememberShutdown = False
+            if current <= 5:
+                self.token = ""
 
     def get_settings_version(self):
-        return 5
+        return 6
 
     def get_settings_defaults(self):
         return dict(
             ip=None,
+            token="",
             intervall=1,
             onOffButtonEnabled=False,
             powerOnOnStart=False,
@@ -367,7 +374,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
 
     def get_settings_restricted_paths(self):
         return dict(admin=[
-            ['ip']
+            ['ip', 'token']
         ])
 
     def on_settings_save(self, data):
