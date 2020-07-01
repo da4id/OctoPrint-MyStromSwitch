@@ -66,6 +66,15 @@
     <div class="control-group">
 	    <div class="controls">
 			<label class="checkbox">
+		    	<input type="checkbox" data-bind="checked: settings.plugins.mystromswitch.rememberShutdown">remember Shutdown
+			</label>
+		    <span class="help-block"><small>{{ _('Remember state of the checkboxes after reboot') }}</small></span>
+		</div>
+	</div>
+
+    <div class="control-group">
+	    <div class="controls">
+			<label class="checkbox">
 		    	<input type="checkbox" data-bind="checked: settings.plugins.mystromswitch.showShutdownOctopiOption">Show option to automatic shutdown Octoprint after Print is finished
 			</label>
 		    <span class="help-block"><small>{{ _('This setting shows the option to shut Octoprint down and switch your mySwitch off after your Print is finished. Use the "Delay after print is finished" option to determine after how many seconds Octoprint will be shutted down. After this use "Turn Relais Off Delay" to determine after how many seconds the Relas will be switched off') }}</small></span>
