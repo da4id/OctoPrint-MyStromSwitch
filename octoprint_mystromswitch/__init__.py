@@ -193,8 +193,6 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                         data["automaticShutdownEnabled"] = self.shutdownAfterPrintFinished
                         data["automaticPowerOffEnabled"] = self.powerOffAfterPrintFinished
                         self._plugin_manager.send_plugin_message(self._identifier, data)
-                        self._logger.info("automaticShutdownEnabled: %s" % self.shutdownAfterPrintFinished)
-                        self._logger.info("automaticPowerOffEnabled: %s" % self.powerOffAfterPrintFinished)
                         return
                 except (requests.exceptions.ConnectionError, ValueError) as e:
                     self._logger.exception(e)
@@ -281,25 +279,29 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             self.shutdownAfterPrintFinished = True
             if self.rememberShutdown:
                 self.lastShutdown = self.shutdownAfterPrintFinished
-                self._settings.set_boolean("lastShutdown",self.lastShutdown)
+                self._settings.set_boolean("lastShutdown", self.lastShutdown)
+                self._logger.info("lastShutdown: %s" % self.lastShutdown)
         elif command == "disableShutdownAfterFinish":
             self._logger.info("disableShutdownAfterFinish")
             self.shutdownAfterPrintFinished = False
             if self.rememberShutdown:
                 self.lastShutdown = self.shutdownAfterPrintFinished
                 self._settings.set_boolean("lastShutdown", self.lastShutdown)
+                self._logger.info("lastShutdown: %s" % self.lastShutdown)
         elif command == "enablePowerOffAfterFinish":
             self._logger.info("enablePowerOffAfterFinish")
             self.powerOffAfterPrintFinished = True
             if self.rememberShutdown:
                 self.lastPowerOff = self.powerOffAfterPrintFinished
                 self._settings.set_boolean("lastPowerOff", self.lastPowerOff)
+                self._logger.info("lastPowerOff: %s" % self.lastPowerOff)
         elif command == "disablePowerOffAfterFinish":
             self._logger.info("disablePowerOffAfterFinish")
             self.powerOffAfterPrintFinished = False
             if self.rememberShutdown:
                 self.lastPowerOff = self.powerOffAfterPrintFinished
                 self._settings.set_boolean("lastPowerOff", self.lastPowerOff)
+                self._logger.info("lastPowerOff: %s" % self.lastPowerOff)
 
     def get_api_commands(self):
         return dict(
