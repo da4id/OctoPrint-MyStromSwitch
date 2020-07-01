@@ -48,13 +48,6 @@
       <option name="presentableId" value="Default" />
       <updated>1574193087583</updated>
     </task>
-    <task id="LOCAL-00043" summary="#9 Relais ausschalten wenn Octoprint heruntergefahren wird&#10;#7 Relais einschalten wenn Octoprint gestartet wurde&#10;&#10;Api call fix">
-      <created>1574708497039</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1574708497039</updated>
-    </task>
     <task id="LOCAL-00044" summary="#13 Wenn Request fehlschägt max. 3x versuchen">
       <created>1574710870028</created>
       <option name="number" value="00044" />
@@ -391,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593629014910</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="#21 Add PowerOFF when print is finished">
+      <created>1593629188987</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1593629188987</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="UnknownFeatures">
