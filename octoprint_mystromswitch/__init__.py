@@ -177,12 +177,8 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         if self.ip is not None:
             try:
                 try:
-                    headers = {}
-                    if self.token is not None and self.token != "":
-                        headers = {"Token": self.token}
-                    self._logger.info(headers)
                     request = requests.get(
-                        'http://{}/report'.format(self.ip), headers=headers, timeout=1)
+                        'http://{}/report'.format(self.ip), headers={"Token": self.token}, timeout=1)
                     if request.status_code == 200:
                         timestamp = time.time()
                         data = request.json()
@@ -247,11 +243,8 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                 try:
                     self._logger.info("try to send Powercycle Request")
                     self._logger.info('http://{}/timer'.format(self.ip))
-                    headers = {}
-                    if self.token is not None and self.token != "":
-                        headers = {"Token": self.token}
                     request = requests.post(
-                        'http://{}/timer'.format(self.ip), params={'mode': value, 'time': time}, headers=headers,
+                        'http://{}/timer'.format(self.ip), params={'mode': value, 'time': time}, headers={"Token": self.token},
                         timeout=1)
                     if request.status_code == 200:
                         return
@@ -269,11 +262,8 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         nbRetry = 0
         while nbRetry < 3:
             try:
-                headers = {}
-                if self.token is not None and self.token != "":
-                    headers = {"Token": self.token}
                 request = requests.get(
-                    'http://{}/toggle'.format(self.ip), headers=headers, timeout=1)
+                    'http://{}/toggle'.format(self.ip), headers={"Token": self.token}, timeout=1)
                 if request.status_code == 200:
                     return
                 else:

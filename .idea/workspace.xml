@@ -47,13 +47,6 @@
       <option name="presentableId" value="Default" />
       <updated>1574193087583</updated>
     </task>
-    <task id="LOCAL-00051" summary="#15 Beschreibung erstellen">
-      <created>1574876349466</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1574876349466</updated>
-    </task>
     <task id="LOCAL-00052" summary="#16 Codereview Octoprint Plugin Repo">
       <created>1575192543311</created>
       <option name="number" value="00052" />
@@ -390,7 +383,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593631193159</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="#24 API Token Support">
+      <created>1593631506549</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1593631506549</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="UnknownFeatures">
