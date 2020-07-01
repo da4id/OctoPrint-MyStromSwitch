@@ -75,13 +75,13 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         self._logger.debug("shutdownDelay: %s" % self.shutdownDelay)
 
         self.rememberShutdown = self._settings.get_boolean(["rememberShutdown"])
-        self._logger.debug("rememberShutdown: %s" % self.rememberShutdown)
+        self._logger.info("rememberShutdown: %s" % self.rememberShutdown)
 
         self.lastPowerOff = self._settings.get_int(["lastPowerOff"])
-        self._logger.debug("lastPowerOff: %s" % self.lastPowerOff)
+        self._logger.info("lastPowerOff: %s" % self.lastPowerOff)
 
         self.lastShutdown = self._settings.get_int(["lastShutdown"])
-        self._logger.debug("lastShutdown: %s" % self.lastShutdown)
+        self._logger.info("lastShutdown: %s" % self.lastShutdown)
 
         if self.rememberShutdown:
             self.powerOffAfterPrintFinished = self.lastPowerOff
@@ -193,6 +193,8 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                         data["automaticShutdownEnabled"] = self.shutdownAfterPrintFinished
                         data["automaticPowerOffEnabled"] = self.powerOffAfterPrintFinished
                         self._plugin_manager.send_plugin_message(self._identifier, data)
+                        self._logger.info("automaticShutdownEnabled: %s" % self.automaticShutdownEnabled)
+                        self._logger.info("automaticPowerOffEnabled: %s" % self.automaticPowerOffEnabled)
                         return
                 except (requests.exceptions.ConnectionError, ValueError) as e:
                     self._logger.exception(e)
@@ -202,7 +204,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             self._logger.info("Ip is None")
         data = {"relay": True, "energy": 0, "onOffButtonEnabled": False, "showShutdownOctopiOption": False,
                 "showPowerOffPrintFinishOption": False, "automaticShutdownEnabled": self.shutdownAfterPrintFinished,
-                "v": self.powerOffAfterPrintFinished}
+                "automaticPowerOffEnabled": self.powerOffAfterPrintFinished}
         self._plugin_manager.send_plugin_message(self._identifier, data)
 
     def _setRelaisState(self, newState):

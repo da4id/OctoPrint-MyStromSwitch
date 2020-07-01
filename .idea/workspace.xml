@@ -48,20 +48,6 @@
       <option name="presentableId" value="Default" />
       <updated>1574193087583</updated>
     </task>
-    <task id="LOCAL-00037" summary="#8 Relais ein / ausschalten von Ocotprint aus">
-      <created>1574610253466</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1574610253466</updated>
-    </task>
-    <task id="LOCAL-00038" summary="#9 Relais ausschalten wenn Octoprint heruntergefahren wird&#10;#7 Relais einschalten wenn Octoprint gestartet wurde">
-      <created>1574707150761</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1574707150761</updated>
-    </task>
     <task id="LOCAL-00039" summary="#9 Relais ausschalten wenn Octoprint heruntergefahren wird&#10;#7 Relais einschalten wenn Octoprint gestartet wurde">
       <created>1574707411686</created>
       <option name="number" value="00039" />
@@ -391,7 +377,21 @@
       <option name="project" value="LOCAL" />
       <updated>1593356663020</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="#21 Add PowerOFF when print is finished">
+      <created>1593627018087</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1593627018088</updated>
+    </task>
+    <task id="LOCAL-00087" summary="#21 Add PowerOFF when print is finished">
+      <created>1593627195608</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1593627195608</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="UnknownFeatures">
