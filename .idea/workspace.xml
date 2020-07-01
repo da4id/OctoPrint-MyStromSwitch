@@ -47,13 +47,6 @@
       <option name="presentableId" value="Default" />
       <updated>1574193087583</updated>
     </task>
-    <task id="LOCAL-00045" summary="#11 Energieverbrauch näherungsweise berechnen">
-      <created>1574712024409</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1574712024409</updated>
-    </task>
     <task id="LOCAL-00046" summary="#11 Energieverbrauch näherungsweise berechnen">
       <created>1574712205852</created>
       <option name="number" value="00046" />
@@ -390,7 +383,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593629352018</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="#21 Add PowerOFF when print is finished">
+      <created>1593629491361</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1593629491361</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="UnknownFeatures">
