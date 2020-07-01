@@ -77,10 +77,10 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         self.rememberShutdown = self._settings.get_boolean(["rememberShutdown"])
         self._logger.info("rememberShutdown: %s" % self.rememberShutdown)
 
-        self.lastPowerOff = self._settings.get_int(["lastPowerOff"])
+        self.lastPowerOff = self._settings.get_boolean(["lastPowerOff"])
         self._logger.info("lastPowerOff: %s" % self.lastPowerOff)
 
-        self.lastShutdown = self._settings.get_int(["lastShutdown"])
+        self.lastShutdown = self._settings.get_boolean(["lastShutdown"])
         self._logger.info("lastShutdown: %s" % self.lastShutdown)
 
         if self.rememberShutdown:
