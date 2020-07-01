@@ -19,6 +19,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
 
     def __init__(self):
         self.ip = None
+        self.token = ""
         self.intervall = 1
         self.onOffButtonEnabled = False
         self.powerOnOnStart = False
@@ -49,6 +50,9 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
     def initialize(self):
         self.ip = self._settings.get(["ip"])
         self._logger.debug("ip: %s" % self.ip)
+
+        self.token = self._settings.get(["token"])
+        self._logger.debug("token: %s" % self.token)
 
         self.intervall = self._settings.get_int(["intervall"])
         self._logger.debug("intervall: %s" % self.intervall)
@@ -174,7 +178,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             try:
                 try:
                     request = requests.get(
-                        'http://{}/report'.format(self.ip), timeout=1)
+                        'http://{}/report'.format(self.ip), headers={"Token": self.token}, timeout=1)
                     if request.status_code == 200:
                         timestamp = time.time()
                         data = request.json()
@@ -212,8 +216,11 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             value = '1'
         while nbRetry < 3:
             try:
+                headers = {}
+                if self.token is not None and self.token != "":
+                    headers = {"Token": self.token}
                 request = requests.get(
-                    'http://{}/relay'.format(self.ip), params={'state': value}, timeout=1)
+                    'http://{}/relay'.format(self.ip), params={'state': value}, headers=headers, timeout=1)
                 if request.status_code == 200:
                     return
                 else:
@@ -237,7 +244,8 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                     self._logger.info("try to send Powercycle Request")
                     self._logger.info('http://{}/timer'.format(self.ip))
                     request = requests.post(
-                        'http://{}/timer'.format(self.ip), params={'mode': value, 'time': time}, timeout=1)
+                        'http://{}/timer'.format(self.ip), params={'mode': value, 'time': time}, headers={"Token": self.token},
+                        timeout=1)
                     if request.status_code == 200:
                         return
                     else:
@@ -255,7 +263,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         while nbRetry < 3:
             try:
                 request = requests.get(
-                    'http://{}/toggle'.format(self.ip), timeout=1)
+                    'http://{}/toggle'.format(self.ip), headers={"Token": self.token}, timeout=1)
                 if request.status_code == 200:
                     return
                 else:
@@ -345,13 +353,16 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                 self.lastShutdown = False
                 self.lastPowerOff = False
                 self.rememberShutdown = False
+            if current <= 5:
+                self.token = ""
 
     def get_settings_version(self):
-        return 5
+        return 6
 
     def get_settings_defaults(self):
         return dict(
             ip=None,
+            token="",
             intervall=1,
             onOffButtonEnabled=False,
             powerOnOnStart=False,
@@ -367,7 +378,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
 
     def get_settings_restricted_paths(self):
         return dict(admin=[
-            ['ip']
+            ['ip', 'token']
         ])
 
     def on_settings_save(self, data):
