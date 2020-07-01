@@ -180,6 +180,7 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                     headers = {}
                     if self.token is not None and self.token != "":
                         headers = {"Token": self.token}
+                    self._logger.info(headers)
                     request = requests.get(
                         'http://{}/report'.format(self.ip), headers=headers, timeout=1)
                     if request.status_code == 200:
