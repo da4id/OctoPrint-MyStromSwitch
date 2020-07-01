@@ -27,8 +27,13 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         self.showShutdownOctopiOption = False
         self.showPowerOffPrintFinishOption = False
         self.shutdownDelay = 60
-        self.shutdownAfterPrintFinished = False
-        self.powerOffAfterPrintFinished = False
+
+        self.rememberShutdown = False
+        self.lastPowerOff = False
+        self.lastShutdown = False
+
+        self.shutdownAfterPrintFinished = self.lastShutdown if self.rememberShutdown else False
+        self.powerOffAfterPrintFinished = self.lastPowerOff if self.rememberShutdown else False
 
         self._status_timer = None
         self._abort_timer = None
@@ -68,6 +73,19 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
 
         self.shutdownDelay = self._settings.get_int(["shutdownDelay"])
         self._logger.debug("shutdownDelay: %s" % self.shutdownDelay)
+
+        self.rememberShutdown = self._settings.get_boolean(["rememberShutdown"])
+        self._logger.info("rememberShutdown: %s" % self.rememberShutdown)
+
+        self.lastPowerOff = self._settings.get_boolean(["lastPowerOff"])
+        self._logger.info("lastPowerOff: %s" % self.lastPowerOff)
+
+        self.lastShutdown = self._settings.get_boolean(["lastShutdown"])
+        self._logger.info("lastShutdown: %s" % self.lastShutdown)
+
+        if self.rememberShutdown:
+            self.powerOffAfterPrintFinished = self.lastPowerOff
+            self.shutdownAfterPrintFinished = self.lastShutdown
 
         self._status_timer_start()
 
@@ -123,9 +141,9 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             if self._abort_timer is not None:
                 self._abort_timer.cancel()
                 self._abort_timer = None
-            if self.shutdownAfterPrintFinished:
+            if self.shutdownAfterPrintFinished and self.showShutdownOctopiOption:
                 self._shutdown_system()
-            elif self.powerOffAfterPrintFinished:
+            elif self.powerOffAfterPrintFinished and self.showPowerOffPrintFinishOption:
                 self._logger.info("only Shutdown Relais")
                 self._setRelaisState(False)
 
@@ -150,7 +168,6 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         except Exception as e:
             self._logger.exception("Error when shutting down: {error}".format(error=e))
             return
-
 
     def _status_timer_task(self):
         if self.ip is not None:
@@ -185,9 +202,8 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             self._logger.info("Ip is None")
         data = {"relay": True, "energy": 0, "onOffButtonEnabled": False, "showShutdownOctopiOption": False,
                 "showPowerOffPrintFinishOption": False, "automaticShutdownEnabled": self.shutdownAfterPrintFinished,
-                "v": self.powerOffAfterPrintFinished}
+                "automaticPowerOffEnabled": self.powerOffAfterPrintFinished}
         self._plugin_manager.send_plugin_message(self._identifier, data)
-
 
     def _setRelaisState(self, newState):
         nbRetry = 0
@@ -206,7 +222,6 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             except requests.exceptions.ConnectionError:
                 self._logger.info("Error during set Relais state")
             nbRetry = nbRetry + 1
-
 
     # Sets the switch to a specific inverse newState,
     # waits for a specified amount of time (max 3h),
@@ -235,7 +250,6 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                 self._logger.exception(exp)
             nbRetry = nbRetry + 1
 
-
     def _toggleRelay(self):
         nbRetry = 0
         while nbRetry < 3:
@@ -250,7 +264,6 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                 self._logger.info("Error during toggle Relais state")
             nbRetry = nbRetry + 1
 
-
     def on_api_command(self, command, data):
         if command == "enableRelais":
             self._logger.info("enableRelais")
@@ -264,16 +277,31 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
         elif command == "enableShutdownAfterFinish":
             self._logger.info("enableShutdownAfterFinish")
             self.shutdownAfterPrintFinished = True
+            if self.rememberShutdown:
+                self.lastShutdown = self.shutdownAfterPrintFinished
+                self._settings.set_boolean(["lastShutdown"], self.lastShutdown)
+                self._settings.save()
         elif command == "disableShutdownAfterFinish":
             self._logger.info("disableShutdownAfterFinish")
             self.shutdownAfterPrintFinished = False
+            if self.rememberShutdown:
+                self.lastShutdown = self.shutdownAfterPrintFinished
+                self._settings.set_boolean(["lastShutdown"], self.lastShutdown)
+                self._settings.save()
         elif command == "enablePowerOffAfterFinish":
             self._logger.info("enablePowerOffAfterFinish")
             self.powerOffAfterPrintFinished = True
+            if self.rememberShutdown:
+                self.lastPowerOff = self.powerOffAfterPrintFinished
+                self._settings.set_boolean(["lastPowerOff"], self.lastPowerOff)
+                self._settings.save()
         elif command == "disablePowerOffAfterFinish":
             self._logger.info("disablePowerOffAfterFinish")
             self.powerOffAfterPrintFinished = False
-
+            if self.rememberShutdown:
+                self.lastPowerOff = self.powerOffAfterPrintFinished
+                self._settings.set_boolean(["lastPowerOff"], self.lastPowerOff)
+                self._settings.save()
 
     def get_api_commands(self):
         return dict(
@@ -286,12 +314,10 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             enablePowerOffAfterFinish=[]
         )
 
-
     def on_after_startup(self):
         if self.powerOnOnStart:
             self._logger.info("Turn on Relais on Start")
             self._setRelaisState(True)
-
 
     def on_shutdown(self):
         self._logger.info("on_shutdown_event")
@@ -302,7 +328,6 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             else:
                 self._logger.info("Turn off Relais on Shutdown Delayed")
                 self._powerCycleRelais(False, self.powerOffDelay)
-
 
     def on_settings_migrate(self, target, current):
         if target > current:
@@ -316,11 +341,13 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                 self.showShutdownOctopiOption = False
                 self.showPowerOffPrintFinishOption = False
                 self.shutdownDelay = 60
-
+            if current <= 4:
+                self.lastShutdown = False
+                self.lastPowerOff = False
+                self.rememberShutdown = False
 
     def get_settings_version(self):
-        return 4
-
+        return 5
 
     def get_settings_defaults(self):
         return dict(
@@ -332,21 +359,21 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             powerOffDelay=0,
             showShutdownOctopiOption=False,
             showPowerOffPrintFinishOption=False,
-            shutdownDelay=60
+            shutdownDelay=60,
+            lastShutdown=False,
+            lastPowerOff=False,
+            rememberShutdown=False
         )
-
 
     def get_settings_restricted_paths(self):
         return dict(admin=[
             ['ip']
         ])
 
-
     def on_settings_save(self, data):
         self._logger.info("on_settings_save")
         octoprint.plugin.SettingsPlugin.on_settings_save(self, data)
         self.initialize()
-
 
     def on_event(self, event, payload):
         if not self.shutdownAfterPrintFinished and not self.powerOffAfterPrintFinished:
@@ -371,7 +398,6 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             else:
                 self._shutdown_timer_start()
             return
-
 
     def get_update_information(self):
         return dict(
