@@ -193,8 +193,8 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
                         data["automaticShutdownEnabled"] = self.shutdownAfterPrintFinished
                         data["automaticPowerOffEnabled"] = self.powerOffAfterPrintFinished
                         self._plugin_manager.send_plugin_message(self._identifier, data)
-                        self._logger.info("automaticShutdownEnabled: %s" % self.automaticShutdownEnabled)
-                        self._logger.info("automaticPowerOffEnabled: %s" % self.automaticPowerOffEnabled)
+                        self._logger.info("automaticShutdownEnabled: %s" % self.shutdownAfterPrintFinished)
+                        self._logger.info("automaticPowerOffEnabled: %s" % self.powerOffAfterPrintFinished)
                         return
                 except (requests.exceptions.ConnectionError, ValueError) as e:
                     self._logger.exception(e)
