@@ -4,7 +4,6 @@
     <list default="true" id="7e2e0eec-b22e-4d48-8f24-196d1ed9b51a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/octoprint_mystromswitch/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/octoprint_mystromswitch/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/octoprint_mystromswitch/templates/mystromswitch_settings.jinja2" beforeDir="false" afterPath="$PROJECT_DIR$/octoprint_mystromswitch/templates/mystromswitch_settings.jinja2" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,13 +47,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574193087583</updated>
-    </task>
-    <task id="LOCAL-00049" summary="#14 Einstellungen reorganisieren&#10;&#10;- Beschreibungen angepasst">
-      <created>1574874286229</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1574874286229</updated>
     </task>
     <task id="LOCAL-00050" summary="#15 Beschreibung erstellen">
       <created>1574876224274</created>
@@ -392,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593630227011</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="#24 API Token Support">
+      <created>1593630650365</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1593630650365</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -422,7 +421,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="#5 Rest Api integration&#10;&#10;- Bugfix plugin_requires" />
     <MESSAGE value="#5 Rest Api integration&#10;&#10;- Nullpointer fix" />
     <MESSAGE value="#6 UI Updates senden und anzeigen&#10;&#10;- unnötigen Code entfernen, erster Versuch" />
     <MESSAGE value="Revert &quot;#6 UI Updates senden und anzeigen&quot;&#10;&#10;This reverts commit f83d4259" />
@@ -447,6 +445,7 @@
     <MESSAGE value="#21 Add PowerOFF when print is finished&#10;&#10;neue Einstellmöglichkeiten anzeigen" />
     <MESSAGE value="#22 Button taucht nicht auf&#10;&#10;Fehler anzeigen wenn Verbindung zu switch nicht klappt" />
     <MESSAGE value="#21 Add PowerOFF when print is finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="#21 Add PowerOFF when print is finished" />
+    <MESSAGE value="#24 API Token Support" />
+    <option name="LAST_COMMIT_MESSAGE" value="#24 API Token Support" />
   </component>
 </project>
