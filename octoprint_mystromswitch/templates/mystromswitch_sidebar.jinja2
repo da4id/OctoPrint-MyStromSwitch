@@ -4,11 +4,11 @@
     <button class="btn btn-primary" data-bind="click: onToggleRelayEvent, visible : onOffButtonEnabled">{{ _('Toggle Relais') }}</button>
     <label class="checkbox" data-bind="visible :showShutdownOctopiOption">
 		<input type="checkbox" data-bind="enable: loginState.isUser(), checked: automaticShutdownEnabled, visible :showShutdownOctopiOption">
-		{{ _('Shutdown Octoprint after print finishes') }}
+		{{ _('Shutdown Octoprint after print finished') }}
 	</label>
 
 	<label class="checkbox" data-bind="visible: showPowerOffPrintFinishOption">
 		<input type="checkbox" data-bind="enable: loginState.isUser(), checked: automaticPowerOffEnabled, visible: showPowerOffPrintFinishOption">
-		{{ _('Power Off Relais after print finishes') }}
+		{{ _('Power Off Relais after print finished') }}
 	</label>
 </div>
