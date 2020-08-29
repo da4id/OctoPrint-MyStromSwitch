@@ -162,6 +162,10 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
             self._status_timer.start()
 
     def _shutdown_system(self):
+        if not self._settings.global_get(["server", "commands", "systemShutdownCommand"]):
+            self._logger.warning("systemShutdownCommand is not defined. Aborting shutdown...")
+            return
+
         self._logger.info("Shutdown Relais and System")
         self._powerCycleRelais(False, self.powerOffDelay)
         shutdown_command = self._settings.global_get(["server", "commands", "systemShutdownCommand"])
@@ -388,10 +392,6 @@ class MyStromSwitchPlugin(octoprint.plugin.SettingsPlugin,
 
     def on_event(self, event, payload):
         if not self.shutdownAfterPrintFinished and not self.powerOffAfterPrintFinished:
-            return
-
-        if not self._settings.global_get(["server", "commands", "systemShutdownCommand"]):
-            self._logger.warning("systemShutdownCommand is not defined. Aborting shutdown...")
             return
 
         if event not in [Events.PRINT_DONE, Events.PRINT_FAILED]:
